@@ -1,0 +1,14 @@
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}.hidden{display:none!important}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#102a43,#167d9a)}
+.login-card{width:100%;max-width:390px;background:white;padding:35px;border-radius:18px;box-shadow:0 15px 45px #0004;text-align:center}.logo{font-size:50px}.login-card h1{margin:8px 0}.login-card p{color:#667085;margin-bottom:25px}
+input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccd5e0;border-radius:9px;font-size:15px}textarea{min-height:130px;resize:vertical}
+button{border:0;border-radius:9px;padding:12px 18px;background:#167d9a;color:white;font-weight:bold;cursor:pointer}button:hover{opacity:.9}.login-card button{width:100%;margin-top:8px}
+small{display:block;margin-top:15px;color:#667085}
+header{height:65px;background:#102a43;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 6%;}.brand{font-size:20px;font-weight:bold}.logout{background:#d9534f}
+nav{background:white;padding:12px 6%;box-shadow:0 2px 10px #0001}nav button{margin-right:8px;background:#eef5f8;color:#102a43}
+main{max-width:1100px;margin:auto;padding:30px 20px}.hero{background:linear-gradient(135deg,#167d9a,#0e5b76);color:white;padding:45px;border-radius:18px}.hero h2{font-size:34px;margin-top:0}.hero button{background:white;color:#0e5b76;margin-top:10px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}.card,.panel{background:white;padding:25px;border-radius:15px;box-shadow:0 5px 18px #0000000d}.card span{font-size:30px}.card h3{margin-bottom:8px}.section{animation:fade .25s ease}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.panel{max-width:750px;margin:auto}.panel h2{margin-top:0}.notice{margin-top:18px;padding:14px;background:#fff6d8;border-radius:9px;color:#6b5200}
+#result{margin-top:18px}.safe,.danger,.unknown{padding:16px;border-radius:10px}.safe{background:#e8f7ed;color:#176b35}.danger{background:#fde9e9;color:#9b1c1c}.unknown{background:#eef3f8;color:#344054}.tips li{margin:14px 0}
+#queryResult{margin-top:15px;font-weight:bold}
+@media(max-width:700px){.cards{grid-template-columns:1fr}.hero h2{font-size:27px}nav{overflow:auto;white-space:nowrap}.brand{font-size:16px}}
