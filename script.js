@@ -1,77 +1,437 @@
-// 1. Phone Number Fraud Checker Logic
-document.getElementById('phoneCheckForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// =====================================================
+// LOGIN / LOGOUT
+// =====================================================
 
-    const phone = document.getElementById('phoneNumber').value.trim();
-    const resultBox = document.getElementById('phoneResult');
+const loginPage =
+    document.getElementById("loginPage");
 
-    // Mock Database for testing
-    const reportedFraudNumbers = ['9876543210', '9123456789', '8888888888', '9999999999'];
-    const verifiedSafeNumbers = ['1800111111', '1930000000', '9000000000'];
+const homePage =
+    document.getElementById("homePage");
 
-    resultBox.classList.remove('hidden', 'status-safe', 'status-fraud', 'status-unknown');
+const loginForm =
+    document.getElementById("loginForm");
 
-    if (reportedFraudNumbers.includes(phone)) {
-        resultBox.classList.add('status-fraud');
-        resultBox.innerHTML = `⚠️ <strong>WARNING:</strong> Number ${phone} has been reported for <strong>ONLINE FRAUD / SCAM</strong> multiple times! Do not transfer money or share OTP.`;
-    } else if (verifiedSafeNumbers.includes(phone)) {
-        resultBox.classList.add('status-safe');
-        resultBox.innerHTML = `✅ <strong>VERIFIED SAFE:</strong> Number ${phone} belongs to an officially recognized organization/helpline.`;
-    } else {
-        resultBox.classList.add('status-unknown');
-        resultBox.innerHTML = `ℹ️ <strong>UNVERIFIED NUMBER:</strong> Number ${phone} is not listed in our fraud database yet. Always stay cautious and never share personal information or OTP.`;
-    }
-});
+const logoutBtn =
+    document.getElementById("logoutBtn");
 
-// 2. Cyber Issue Guidance Logic
-document.getElementById('cyberForm').addEventListener('submit', function(e) {
-    e.preventDefault();
 
-    const issue = document.getElementById('issueType').value;
-    const resultBox = document.getElementById('guidanceResult');
-    const title = document.getElementById('guidanceTitle');
-    const steps = document.getElementById('guidanceSteps');
+// Check login status
 
-    const safetyGuides = {
-        'fake-account': {
-            title: 'Action Steps for Fake Account / Impersonation:',
-            steps: ['Report profile on platform.', 'Inform your friends not to send money.', 'Take screenshots as proof.']
-        },
-        'suspicious-link': {
-            title: 'Action Steps for Suspicious Link:',
-            steps: ['Do NOT click or open the link.', 'Clear browser cache if clicked.', 'Never enter password or OTP.']
-        },
-        'online-fraud': {
-            title: 'Action Steps for Online Financial Fraud:',
-            steps: ['Immediately block cards/bank account.', 'Call Helpline 1930 for financial recovery.', 'Report at cybercrime.gov.in.']
-        },
-        'hacked-account': {
-            title: 'Action Steps for Hacked Account:',
-            steps: ['Reset password immediately.', 'Turn on Two-Factor Authentication (2FA).', 'Log out from all devices.']
+if (
+    localStorage.getItem(
+        "cyberShieldLoggedIn"
+    ) === "true"
+) {
+
+    showHome();
+
+} else {
+
+    showLogin();
+
+}
+
+
+// LOGIN
+
+loginForm.addEventListener(
+    "submit",
+    function (e) {
+
+        e.preventDefault();
+
+        const email =
+            document.getElementById(
+                "email"
+            ).value.trim();
+
+        const password =
+            document.getElementById(
+                "password"
+            ).value.trim();
+
+
+        if (
+            email === "" ||
+            password === ""
+        ) {
+
+            alert(
+                "Please enter email and password."
+            );
+
+            return;
+
         }
-    };
 
-    if (safetyGuides[issue]) {
-        title.innerText = safetyGuides[issue].title;
-        let ul = document.createElement('ul');
-        safetyGuides[issue].steps.forEach(step => {
-            let li = document.createElement('li');
-            li.innerHTML = step;
-            ul.appendChild(li);
-        });
-        steps.innerHTML = '';
-        steps.appendChild(ul);
-        resultBox.classList.remove('hidden');
+
+        localStorage.setItem(
+            "cyberShieldLoggedIn",
+            "true"
+        );
+
+
+        showHome();
+
     }
-});
+);
 
-// 3. Login Modal Toggle Logic
-const loginModal = document.getElementById('loginModal');
-document.getElementById('openLoginBtn').addEventListener('click', () => loginModal.classList.remove('hidden'));
-document.getElementById('closeLoginBtn').addEventListener('click', () => loginModal.classList.add('hidden'));
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Login Successful!');
-    loginModal.classList.add('hidden');
-});
+// LOGOUT
+
+logoutBtn.addEventListener(
+    "click",
+    function () {
+
+        localStorage.removeItem(
+            "cyberShieldLoggedIn"
+        );
+
+        showLogin();
+
+    }
+);
+
+
+function showLogin() {
+
+    loginPage.classList.remove(
+        "hidden"
+    );
+
+    homePage.classList.add(
+        "hidden"
+    );
+
+}
+
+
+function showHome() {
+
+    loginPage.classList.add(
+        "hidden"
+    );
+
+    homePage.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+
+// =====================================================
+// MOBILE NUMBER CHECKER
+// =====================================================
+
+document
+    .getElementById(
+        "phoneCheckForm"
+    )
+    .addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+
+            const phone =
+                document
+                    .getElementById(
+                        "phoneNumber"
+                    )
+                    .value.trim();
+
+
+            const resultBox =
+                document.getElementById(
+                    "phoneResult"
+                );
+
+
+            // Validate number
+
+            if (
+                !/^[0-9]{10}$/.test(
+                    phone
+                )
+            ) {
+
+                resultBox.className =
+                    "phone-result-box status-fraud";
+
+                resultBox.classList.remove(
+                    "hidden"
+                );
+
+                resultBox.innerHTML =
+
+                    "❌ Please enter a valid 10-digit mobile number.";
+
+                return;
+
+            }
+
+
+            // Official verification
+
+            resultBox.className =
+                "phone-result-box status-unknown";
+
+            resultBox.classList.remove(
+                "hidden"
+            );
+
+
+            resultBox.innerHTML = `
+
+                <strong>
+                    🔎 Number Ready for Verification
+                </strong>
+
+                <br><br>
+
+                Mobile Number:
+                <strong>${phone}</strong>
+
+                <br><br>
+
+                To check this number using the
+                official cybercrime suspect repository,
+                open the National Cyber Crime
+                Reporting Portal.
+
+                <br><br>
+
+                <a
+                    href="https://www.cybercrime.gov.in/"
+                    target="_blank"
+                    class="result-link">
+
+                    🔐 Open Official Verification
+
+                </a>
+
+                <br><br>
+
+                <small>
+
+                    Note: An unlisted number cannot be
+                    guaranteed to be completely safe.
+
+                </small>
+
+            `;
+
+        }
+    );
+
+
+
+// =====================================================
+// CYBER PROBLEM GUIDANCE
+// =====================================================
+
+document
+    .getElementById(
+        "cyberForm"
+    )
+    .addEventListener(
+        "submit",
+        function (e) {
+
+            e.preventDefault();
+
+
+            const issue =
+                document.getElementById(
+                    "issueType"
+                ).value;
+
+
+            const resultBox =
+                document.getElementById(
+                    "guidanceResult"
+                );
+
+
+            const title =
+                document.getElementById(
+                    "guidanceTitle"
+                );
+
+
+            const steps =
+                document.getElementById(
+                    "guidanceSteps"
+                );
+
+
+
+            // =========================================
+            // GUIDANCE DATABASE
+            // =========================================
+
+            const safetyGuides = {
+
+
+                // FAKE ACCOUNT
+
+                "fake-account": {
+
+                    title:
+                        "👤 Fake Account / Impersonation",
+
+                    steps: [
+
+                        "Take screenshots of the fake account.",
+
+                        "Report the fake profile on the social media platform.",
+
+                        "Inform friends and family not to send money.",
+
+                        "Do not share OTP, password or personal information.",
+
+                        "Keep screenshots and other evidence safely."
+
+                    ]
+
+                },
+
+
+                // SUSPICIOUS LINK
+
+                "suspicious-link": {
+
+                    title:
+                        "🔗 Suspicious Link / Phishing",
+
+                    steps: [
+
+                        "Do NOT click the suspicious link.",
+
+                        "Never enter your password, OTP, PIN or CVV.",
+
+                        "Check the website address carefully.",
+
+                        "If you entered your password, change it immediately.",
+
+                        "Enable Two-Factor Authentication (2FA)."
+
+                    ]
+
+                },
+
+
+                // ONLINE FRAUD
+
+                "online-fraud": {
+
+                    title:
+                        "💳 Online Fraud",
+
+                    steps: [
+
+                        "Immediately contact your bank or payment provider.",
+
+                        "Call the National Cyber Crime Helpline 1930.",
+
+                        "Report the incident at cybercrime.gov.in.",
+
+                        "Keep transaction ID/UTR and screenshots.",
+
+                        "Do not send additional money to the fraudster."
+
+                    ]
+
+                },
+
+
+                // HACKED ACCOUNT
+
+                "hacked-account": {
+
+                    title:
+                        "🔐 Hacked Account",
+
+                    steps: [
+
+                        "Change your password immediately.",
+
+                        "Enable Two-Factor Authentication (2FA).",
+
+                        "Log out from unknown devices.",
+
+                        "Check account recovery email and phone number.",
+
+                        "Contact the platform's official support."
+
+                    ]
+
+                }
+
+            };
+
+
+
+            // Display guidance
+
+            if (
+                safetyGuides[issue]
+            ) {
+
+                title.innerText =
+                    safetyGuides[
+                        issue
+                    ].title;
+
+
+                steps.innerHTML = "";
+
+
+                const ul =
+                    document.createElement(
+                        "ul"
+                    );
+
+
+                safetyGuides[
+                    issue
+                ].steps.forEach(
+                    function (step) {
+
+                        const li =
+                            document.createElement(
+                                "li"
+                            );
+
+                        li.innerText =
+                            step;
+
+                        ul.appendChild(
+                            li
+                        );
+
+                    }
+                );
+
+
+                steps.appendChild(
+                    ul
+                );
+
+
+                resultBox.classList.remove(
+                    "hidden"
+                );
+
+
+                resultBox.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+
+        }
+    );
