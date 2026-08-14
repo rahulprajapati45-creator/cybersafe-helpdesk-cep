@@ -3,19 +3,752 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Cyber Safety Helpdesk
-    </title>
+<title>Cyber Safety Helpdesk</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    background:
+        linear-gradient(135deg, #0f172a, #0369a1);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.25);
+}
+
+.login-logo {
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.login-logo span {
+    color: #0284c7;
+}
+
+.login-card h1 {
+    text-align: center;
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.login-card .login-text {
+    text-align: center;
+
+    color: #64748b;
+
+    margin-bottom: 25px;
+}
+
+.login-card label {
+    display: block;
+
+    font-weight: bold;
+
+    margin:
+        12px 0 6px;
+}
+
+.login-card input {
+    width: 100%;
+
+    padding: 13px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+}
+
+.login-btn {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #0284c7;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #0369a1;
+}
+
+.demo-text {
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #64748b;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #0f172a;
+
+    color: white;
+
+    padding: 17px 5%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.logo span {
+    color: #38bdf8;
+}
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+.logout-btn {
+    background: #ef4444;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 16px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background:
+        linear-gradient(135deg, #0f172a, #1e3a8a);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 65px 20px;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    background: #0284c7;
+
+    padding: 6px 15px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 750px;
+
+    margin: auto;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    max-width: 850px;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+}
+
+.container h2 {
+    margin-bottom: 10px;
+}
+
+.sub-text {
+    color: #64748b;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+label {
+    display: block;
+
+    font-weight: bold;
+
+    margin:
+        13px 0 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0284c7;
+}
+
+.input-with-btn {
+    display: flex;
+
+    gap: 10px;
+}
+
+.check-btn,
+.submit-btn {
+    background: #0284c7;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px 20px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.check-btn:hover,
+.submit-btn:hover {
+    background: #0369a1;
+}
+
+.submit-btn {
+    width: 100%;
+
+    margin-top: 18px;
+}
+
+
+/* =========================
+   PHONE RESULT
+========================= */
+
+.phone-result-box {
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    line-height: 1.8;
+}
+
+.status-safe {
+    background: #dcfce7;
+
+    border:
+        1px solid #86efac;
+
+    color: #166534;
+}
+
+.status-risk {
+    background: #fef3c7;
+
+    border:
+        1px solid #fcd34d;
+
+    color: #92400e;
+}
+
+.status-spam {
+    background: #fee2e2;
+
+    border:
+        1px solid #fca5a5;
+
+    color: #991b1b;
+}
+
+.status-error {
+    background: #fee2e2;
+
+    border:
+        1px solid #fca5a5;
+
+    color: #991b1b;
+}
+
+.checker-note {
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: #f8fafc;
+
+    border-left:
+        4px solid #0284c7;
+}
+
+
+/* =========================
+   GUIDANCE
+========================= */
+
+.guidance-box {
+    margin-top: 25px;
+
+    padding: 22px;
+
+    background: #eff6ff;
+
+    border-left:
+        5px solid #0284c7;
+
+    border-radius: 7px;
+}
+
+.guidance-box li {
+    margin:
+        9px 0 9px 22px;
+}
+
+.alert-note {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+    border-radius: 7px;
+}
+
+
+/* =========================
+   SAFETY TIPS
+========================= */
+
+.tips-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-top: 20px;
+}
+
+.tip-card {
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 10px;
+}
+
+.tip-card h3 {
+    color: #0369a1;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   HELP DESK DAY
+========================= */
+
+.helpdesk-day {
+    max-width: 1100px;
+
+    margin: 40px auto;
+
+    padding: 50px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e0f2fe,
+            #f8fafc
+        );
+
+    border-radius: 16px;
+}
+
+.helpdesk-content {
+    text-align: center;
+}
+
+.event-badge {
+    display: inline-block;
+
+    background: #0284c7;
+
+    color: white;
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.helpdesk-content h2 {
+    font-size: 32px;
+
+    margin: 12px 0;
+}
+
+.event-main-text {
+    max-width: 850px;
+
+    margin:
+        15px auto 30px;
+
+    font-size: 18px;
+
+    color: #334155;
+}
+
+.event-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.event-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.07);
+
+    text-align: left;
+}
+
+.event-card h3 {
+    color: #0369a1;
+
+    margin-bottom: 10px;
+}
+
+.activities {
+    background: white;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    text-align: left;
+}
+
+.activities h3 {
+    color: #0369a1;
+
+    margin-bottom: 12px;
+}
+
+.activities li {
+    margin:
+        10px 0 10px 25px;
+}
+
+.event-purpose {
+    margin-top: 25px;
+
+    padding: 22px;
+
+    background: #f0fdf4;
+
+    border-left:
+        5px solid #16a34a;
+
+    border-radius: 8px;
+
+    text-align: left;
+}
+
+
+/* =========================
+   OFFICIAL
+========================= */
+
+.official-section {
+    max-width: 850px;
+
+    margin: 30px auto;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background: #e0f2fe;
+
+    border-radius: 14px;
+}
+
+.official-btn {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    background: #0369a1;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   EMERGENCY
+========================= */
+
+.emergency-sec {
+    background: #0f172a;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    margin-top: 40px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #0284c7;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 16px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    header {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .container {
+        margin:
+            20px 12px;
+
+        padding: 22px;
+    }
+
+    .input-with-btn {
+        flex-direction: column;
+    }
+
+    .check-btn {
+        width: 100%;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .helpdesk-day {
+        margin:
+            25px 12px;
+
+        padding:
+            30px 18px;
+    }
+
+    .helpdesk-content h2 {
+        font-size: 27px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -27,9 +760,7 @@
      LOGIN PAGE
 ===================================================== -->
 
-<div
-    id="loginPage"
-    class="login-page">
+<div id="loginPage" class="login-page">
 
     <div class="login-card">
 
@@ -41,15 +772,14 @@
             Cyber Safety Helpdesk
         </h1>
 
-        <p>
+        <p class="login-text">
             Login to access the Cyber Safety Helpdesk
         </p>
 
 
         <form id="loginForm">
 
-
-            <label for="email">
+            <label>
                 Email Address
             </label>
 
@@ -60,7 +790,7 @@
                 required>
 
 
-            <label for="password">
+            <label>
                 Password
             </label>
 
@@ -82,8 +812,8 @@
         </form>
 
 
-        <p class="demo-login">
-            Demo: Enter any valid email and password
+        <p class="demo-text">
+            Demo login: Enter any valid email and password
         </p>
 
     </div>
@@ -93,642 +823,1345 @@
 
 
 <!-- =====================================================
-     MAIN HOME PAGE
+     HOME PAGE
 ===================================================== -->
 
-<div
-    id="homePage"
-    class="hidden">
+<div id="homePage" class="hidden">
 
 
-    <!-- HEADER -->
+<header>
 
-    <header>
+    <div class="logo">
+        Cyber<span>Shield</span> Helpdesk
+    </div>
 
-        <div class="logo">
-            Cyber<span>Shield</span> Helpdesk
-        </div>
 
+    <nav>
 
-        <nav>
+        <a href="#home">
+            Home
+        </a>
 
-            <a href="#home">
-                Home
-            </a>
+        <a href="#checker">
+            Number Checker
+        </a>
 
-            <a href="#checker">
-                Number Checker
-            </a>
+        <a href="#guidance">
+            Get Help
+        </a>
 
-            <a href="#guidance">
-                Get Help
-            </a>
+        <a href="#helpdesk">
+            Help Desk Day
+        </a>
 
-            <a href="#helpdesk">
-                Help Desk Day
-            </a>
+        <button
+            id="logoutBtn"
+            class="logout-btn">
 
+            Logout
 
-            <button
-                id="logoutBtn"
-                class="logout-btn">
+        </button>
 
-                Logout
+    </nav>
 
-            </button>
+</header>
 
-        </nav>
 
-    </header>
 
+<!-- HERO -->
 
+<section id="home" class="hero">
 
-    <!-- =================================================
-         HERO
-    ================================================= -->
+    <span class="hero-badge">
+        CYBER SAFETY AWARENESS
+    </span>
 
-    <section
-        id="home"
-        class="hero">
+    <h1>
+        Cyber Safety Helpdesk
+    </h1>
 
-        <div class="hero-content">
+    <p>
+        Check suspicious numbers, get basic cyber-safety
+        guidance and learn how to stay safe online.
+    </p>
 
-            <span class="hero-badge">
-                CYBER SAFETY AWARENESS
-            </span>
+</section>
 
-            <h1>
-                Cyber Safety Helpdesk
-            </h1>
 
-            <p>
-                Verify suspicious numbers, get basic cyber-safety
-                guidance and learn how to stay safe online.
-            </p>
 
-        </div>
+<!-- ABOUT -->
 
-    </section>
+<section class="container">
 
+    <h2>
+        🛡️ About Cyber Safety Helpdesk
+    </h2>
 
+    <p>
+        Cyber Safety Helpdesk helps users understand and
+        respond to common cyber-safety problems.
+    </p>
 
-    <!-- =================================================
-         ABOUT
-    ================================================= -->
+    <p>
+        Users can select their problem such as
+        <strong>Fake Account</strong>,
+        <strong>Suspicious Link</strong>,
+        <strong>Online Fraud</strong> or
+        <strong>Hacked Account</strong>
+        and receive basic safety guidance.
+    </p>
 
-    <section class="container about-section">
+</section>
 
-        <h2>
-            🛡️ About Cyber Safety Helpdesk
-        </h2>
 
-        <p>
-            Cyber Safety Helpdesk helps users understand and
-            respond to common cyber-safety problems.
-        </p>
 
-        <p>
-            Users can select their problem such as
-            <strong>Fake Account</strong>,
-            <strong>Suspicious Link</strong>,
-            <strong>Online Fraud</strong> or
-            <strong>Hacked Account</strong>
-            and receive basic safety guidance.
-        </p>
+<!-- =====================================================
+     PHONE CHECKER
+===================================================== -->
 
-    </section>
+<section id="checker" class="container">
 
+    <h2>
+        📱 Mobile Number Spam & Risk Checker
+    </h2>
 
+    <p class="sub-text">
 
-    <!-- =================================================
-         MOBILE NUMBER CHECKER
-    ================================================= -->
+        Enter an Indian mobile number to check its
+        validity and available spam/fraud risk signals.
 
-    <section
-        id="checker"
-        class="container">
+    </p>
 
-        <h2>
-            📱 Mobile Number Fraud Checker
-        </h2>
 
-        <p class="sub-text">
+    <form id="phoneCheckForm">
 
-            Enter a 10-digit mobile number to continue
-            to the official cybercrime suspect repository.
+        <label>
+            Enter 10-Digit Mobile Number
+        </label>
 
-        </p>
 
+        <div class="input-with-btn">
 
-        <form id="phoneCheckForm">
-
-
-            <label for="phoneNumber">
-
-                Enter 10-Digit Mobile Number
-
-            </label>
-
-
-            <div class="input-with-btn">
-
-                <input
-                    type="tel"
-                    id="phoneNumber"
-                    placeholder="9876543210"
-                    maxlength="10"
-                    pattern="[0-9]{10}"
-                    required>
-
-
-                <button
-                    type="submit"
-                    class="check-btn">
-
-                    Check Number
-
-                </button>
-
-            </div>
-
-        </form>
-
-
-        <div
-            id="phoneResult"
-            class="phone-result-box hidden">
-        </div>
-
-
-        <div class="checker-note">
-
-            <strong>Important:</strong>
-
-            An unlisted number cannot be guaranteed
-            to be completely safe.
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         CYBER PROBLEM GUIDANCE
-    ================================================= -->
-
-    <section
-        id="guidance"
-        class="container">
-
-        <h2>
-            🚨 Select Your Cyber Problem
-        </h2>
-
-        <p class="sub-text">
-
-            Select your problem to receive basic
-            step-by-step safety guidance.
-
-        </p>
-
-
-        <form id="cyberForm">
-
-
-            <label for="issueType">
-
-                What problem are you facing?
-
-            </label>
-
-
-            <select
-                id="issueType"
+            <input
+                type="tel"
+                id="phoneNumber"
+                placeholder="9876543210"
+                maxlength="10"
                 required>
-
-                <option value="">
-                    -- Select Your Problem --
-                </option>
-
-                <option value="fake-account">
-                    👤 Fake Account / Impersonation
-                </option>
-
-                <option value="suspicious-link">
-                    🔗 Suspicious Link / Phishing
-                </option>
-
-                <option value="online-fraud">
-                    💳 Online Fraud
-                </option>
-
-                <option value="hacked-account">
-                    🔐 Hacked Account
-                </option>
-
-            </select>
-
-
-
-            <label for="details">
-
-                Additional Details (Optional)
-
-            </label>
-
-
-            <textarea
-                id="details"
-                rows="4"
-                placeholder="Briefly describe what happened...">
-            </textarea>
-
 
 
             <button
                 type="submit"
-                class="submit-btn">
+                class="check-btn">
 
-                Get Safety Guidance
+                Check Number
 
             </button>
 
-        </form>
+        </div>
+
+    </form>
+
+
+    <div
+        id="phoneResult"
+        class="phone-result-box hidden">
+    </div>
+
+
+    <div class="checker-note">
+
+        <strong>Important:</strong>
+
+        A "VALID" result does not mean the person is
+        trustworthy. A "SPAM" result means the API has
+        detected spam/abuse risk signals.
+
+    </div>
+
+</section>
 
 
 
-        <!-- GUIDANCE RESULT -->
+<!-- =====================================================
+     CYBER PROBLEMS
+===================================================== -->
 
-        <div
-            id="guidanceResult"
-            class="guidance-box hidden">
+<section id="guidance" class="container">
 
-            <h3
-                id="guidanceTitle">
-            </h3>
+    <h2>
+        🚨 Select Your Cyber Problem
+    </h2>
 
-            <div
-                id="guidanceSteps">
-            </div>
+    <p class="sub-text">
+        Select your problem to receive basic safety guidance.
+    </p>
 
 
-            <div class="alert-note">
+    <form id="cyberForm">
 
-                <strong>
-                    Emergency Action:
-                </strong>
+        <label>
+            What problem are you facing?
+        </label>
 
-                If you have lost money due to cyber fraud,
-                immediately call
 
-                <strong>1930</strong>
+        <select id="issueType" required>
 
-                and report the incident through
+            <option value="">
+                -- Select Your Problem --
+            </option>
 
-                <strong>cybercrime.gov.in</strong>.
+            <option value="fake-account">
+                👤 Fake Account / Impersonation
+            </option>
 
-            </div>
+            <option value="suspicious-link">
+                🔗 Suspicious Link / Phishing
+            </option>
+
+            <option value="online-fraud">
+                💳 Online Fraud
+            </option>
+
+            <option value="hacked-account">
+                🔐 Hacked Account
+            </option>
+
+        </select>
+
+
+        <label>
+            Additional Details
+        </label>
+
+
+        <textarea
+            id="details"
+            rows="4"
+            placeholder="Briefly describe what happened...">
+        </textarea>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            Get Safety Guidance
+
+        </button>
+
+    </form>
+
+
+    <div
+        id="guidanceResult"
+        class="guidance-box hidden">
+
+        <h3 id="guidanceTitle">
+        </h3>
+
+        <div id="guidanceSteps">
+        </div>
+
+
+        <div class="alert-note">
+
+            <strong>
+                Emergency Action:
+            </strong>
+
+            If you lost money because of cyber fraud,
+            immediately call <strong>1930</strong>
+            and report at the official cybercrime portal.
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- =================================================
-         BASIC CYBER SAFETY TIPS
-    ================================================= -->
+<!-- =====================================================
+     SAFETY TIPS
+===================================================== -->
 
-    <section class="container">
+<section class="container">
+
+    <h2>
+        🔐 Basic Cyber Safety Tips
+    </h2>
+
+
+    <div class="tips-grid">
+
+
+        <div class="tip-card">
+
+            <h3>
+                🔑 Strong Password
+            </h3>
+
+            <p>
+                Use strong and unique passwords.
+                Never share passwords.
+            </p>
+
+        </div>
+
+
+        <div class="tip-card">
+
+            <h3>
+                📲 OTP Safety
+            </h3>
+
+            <p>
+                Never share OTP, PIN or CVV with
+                unknown people.
+            </p>
+
+        </div>
+
+
+        <div class="tip-card">
+
+            <h3>
+                🔗 Check Links
+            </h3>
+
+            <p>
+                Do not open unknown or suspicious links.
+            </p>
+
+        </div>
+
+
+        <div class="tip-card">
+
+            <h3>
+                💳 Payment Safety
+            </h3>
+
+            <p>
+                Verify the receiver before making
+                online payments.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CYBER HELP DESK DAY
+===================================================== -->
+
+<section
+    id="helpdesk"
+    class="helpdesk-day">
+
+
+    <div class="helpdesk-content">
+
+
+        <span class="event-badge">
+            COMMUNITY CYBER AWARENESS PROGRAM
+        </span>
+
 
         <h2>
-            🔐 Basic Cyber Safety Tips
+            🛡️ Cyber Help Desk Day
         </h2>
 
 
-        <div class="tips-grid">
+        <p class="event-main-text">
+
+            Organize a Cyber Help Desk Day where community
+            members can bring their general cyber-safety
+            questions. Students demonstrate the website
+            and provide awareness guidance.
+
+        </p>
 
 
-            <div class="tip-card">
+
+        <div class="event-grid">
+
+
+            <div class="event-card">
 
                 <h3>
-                    🔑 Strong Passwords
+                    👥 Community Members
                 </h3>
 
                 <p>
-                    Use strong and unique passwords.
-                    Never share passwords with anyone.
+
+                    Community members can bring their general
+                    cyber-safety questions and discuss common
+                    online safety concerns.
+
                 </p>
 
             </div>
 
 
 
-            <div class="tip-card">
+            <div class="event-card">
 
                 <h3>
-                    📲 OTP Safety
+                    💻 Student Demonstration
                 </h3>
 
                 <p>
-                    Never share OTP, PIN or CVV with
-                    unknown people.
+
+                    Students demonstrate the Cyber Safety
+                    Helpdesk website and explain how users
+                    can use its safety features.
+
                 </p>
 
             </div>
 
 
 
-            <div class="tip-card">
+            <div class="event-card">
 
                 <h3>
-                    🔗 Check Links
+                    📢 Awareness Guidance
                 </h3>
 
                 <p>
-                    Avoid clicking unknown or suspicious
-                    links received online.
+
+                    Students provide awareness guidance about
+                    fake accounts, suspicious links, online
+                    fraud, hacked accounts, OTP safety and
+                    secure online practices.
+
                 </p>
 
             </div>
-
-
-
-            <div class="tip-card">
-
-                <h3>
-                    💳 Payment Safety
-                </h3>
-
-                <p>
-                    Verify the receiver before making
-                    online payments.
-                </p>
-
-            </div>
-
 
         </div>
 
-    </section>
+
+
+        <div class="activities">
+
+            <h3>
+                📋 Cyber Help Desk Day Activities
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    Answer general cyber-safety questions.
+                </li>
+
+                <li>
+                    Demonstrate the Cyber Safety Helpdesk website.
+                </li>
+
+                <li>
+                    Explain suspicious links and phishing.
+                </li>
+
+                <li>
+                    Explain fake accounts and impersonation.
+                </li>
+
+                <li>
+                    Provide online fraud prevention awareness.
+                </li>
+
+                <li>
+                    Explain basic account-security practices.
+                </li>
+
+                <li>
+                    Guide users about official cybercrime reporting.
+                </li>
+
+            </ul>
+
+        </div>
 
 
 
-    <!-- =================================================
-         CYBER HELP DESK DAY
-    ================================================= -->
+        <div class="event-purpose">
 
-    <section
-        id="helpdesk"
-        class="helpdesk-day">
+            <h3>
+                🎯 Purpose
+            </h3>
 
+            <p>
 
-        <div class="helpdesk-content">
-
-
-            <span class="event-badge">
-
-                COMMUNITY CYBER AWARENESS PROGRAM
-
-            </span>
-
-
-            <h2>
-                🛡️ Cyber Help Desk Day
-            </h2>
-
-
-            <p class="event-main-text">
-
-                Organize a Cyber Help Desk Day where community
-                members can bring their general cyber-safety
-                questions. Students demonstrate the website
-                and provide awareness guidance.
+                The purpose of Cyber Help Desk Day is to increase
+                community awareness about cyber safety and help
+                people understand basic steps to protect their
+                personal information and online accounts.
 
             </p>
 
-
-
-            <!-- COMMUNITY MEMBERS -->
-
-            <div class="event-grid">
-
-
-                <div class="event-card">
-
-                    <h3>
-                        👥 Community Members
-                    </h3>
-
-                    <p>
-
-                        Community members can bring their
-                        general cyber-safety questions and
-                        discuss common online safety concerns.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- STUDENT DEMONSTRATION -->
-
-                <div class="event-card">
-
-                    <h3>
-                        💻 Student Demonstration
-                    </h3>
-
-                    <p>
-
-                        Students demonstrate the Cyber Safety
-                        Helpdesk website and explain how users
-                        can use its safety features.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- AWARENESS GUIDANCE -->
-
-                <div class="event-card">
-
-                    <h3>
-                        📢 Awareness Guidance
-                    </h3>
-
-                    <p>
-
-                        Students provide awareness guidance
-                        about fake accounts, suspicious links,
-                        online fraud, hacked accounts, OTP
-                        safety and secure online practices.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ACTIVITIES -->
-
-            <div class="activities">
-
-                <h3>
-                    📋 Cyber Help Desk Day Activities
-                </h3>
-
-
-                <ul>
-
-                    <li>
-                        Answer general cyber-safety questions.
-                    </li>
-
-                    <li>
-                        Demonstrate the Cyber Safety Helpdesk website.
-                    </li>
-
-                    <li>
-                        Explain how to identify suspicious links.
-                    </li>
-
-                    <li>
-                        Explain how to identify fake accounts.
-                    </li>
-
-                    <li>
-                        Provide awareness about online fraud prevention.
-                    </li>
-
-                    <li>
-                        Explain basic account-security practices.
-                    </li>
-
-                    <li>
-                        Guide users about official cybercrime reporting.
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-
-            <!-- EVENT PURPOSE -->
-
-            <div class="event-purpose">
-
-                <h3>
-                    🎯 Purpose of the Help Desk Day
-                </h3>
-
-                <p>
-
-                    The purpose is to increase community awareness
-                    about cyber safety and help people understand
-                    basic steps they can take to protect their
-                    personal information and online accounts.
-
-                </p>
-
-            </div>
-
-
         </div>
 
-    </section>
+
+    </div>
+
+</section>
 
 
 
-    <!-- =================================================
-         OFFICIAL CYBER CRIME
-    ================================================= -->
+<!-- =====================================================
+     OFFICIAL PORTAL
+===================================================== -->
 
-    <section class="official-section">
+<section class="official-section">
 
-        <h2>
-            🇮🇳 Official Cyber Crime Help
-        </h2>
+    <h2>
+        🇮🇳 Official Cyber Crime Help
+    </h2>
 
-        <p>
+    <p>
 
-            For official cybercrime reporting and related
-            services, visit the National Cyber Crime
-            Reporting Portal.
+        For official cybercrime reporting, visit the
+        National Cyber Crime Reporting Portal.
 
-        </p>
-
-
-        <a
-            href="https://www.cybercrime.gov.in/"
-            target="_blank"
-            class="official-btn">
-
-            Open Official Cyber Crime Portal
-
-        </a>
-
-    </section>
+    </p>
 
 
+    <a
+        href="https://www.cybercrime.gov.in/"
+        target="_blank"
+        class="official-btn">
 
-    <!-- =================================================
-         EMERGENCY
-    ================================================= -->
+        Open Cyber Crime Portal
 
-    <section class="emergency-sec">
+    </a>
 
-        <h2>
-            🚨 Need Immediate Assistance?
-        </h2>
-
-        <p>
-
-            National Cyber Crime Helpline:
-            <strong>1930</strong>
-
-        </p>
-
-        <p>
-
-            Report Online:
-            <strong>cybercrime.gov.in</strong>
-
-        </p>
-
-    </section>
+</section>
 
 
 
-    <!-- =================================================
-         FOOTER
-    ================================================= -->
+<!-- EMERGENCY -->
 
-    <footer>
+<section class="emergency-sec">
 
-        <p>
+    <h2>
+        🚨 Need Immediate Assistance?
+    </h2>
 
-            © 2026 Cyber Safety Helpdesk.
-            Empowering Safe Digital Communities.
+    <p>
+        National Cyber Crime Helpline:
+        <strong>1930</strong>
+    </p>
 
-        </p>
+    <p>
+        Report Online:
+        <strong>cybercrime.gov.in</strong>
+    </p>
 
-    </footer>
+</section>
+
+
+
+<footer>
+
+    © 2026 Cyber Safety Helpdesk.
+    Empowering Safe Digital Communities.
+
+</footer>
 
 
 </div>
 
 
 
-<script src="script.js"></script>
+<script>
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+const loginPage =
+    document.getElementById("loginPage");
+
+const homePage =
+    document.getElementById("homePage");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+function showLogin() {
+
+    loginPage.classList.remove("hidden");
+
+    homePage.classList.add("hidden");
+
+}
+
+
+function showHome() {
+
+    loginPage.classList.add("hidden");
+
+    homePage.classList.remove("hidden");
+
+}
+
+
+/* Check previous login */
+
+if (
+    localStorage.getItem("cyberLoggedIn")
+    === "true"
+) {
+
+    showHome();
+
+} else {
+
+    showLogin();
+
+}
+
+
+/* Login */
+
+loginForm.addEventListener(
+    "submit",
+    function(e) {
+
+        e.preventDefault();
+
+
+        const email =
+            document.getElementById("email")
+            .value.trim();
+
+        const password =
+            document.getElementById("password")
+            .value.trim();
+
+
+        if (
+            email === "" ||
+            password === ""
+        ) {
+
+            alert(
+                "Please enter email and password."
+            );
+
+            return;
+        }
+
+
+        localStorage.setItem(
+            "cyberLoggedIn",
+            "true"
+        );
+
+
+        showHome();
+
+    }
+);
+
+
+/* Logout */
+
+logoutBtn.addEventListener(
+    "click",
+    function() {
+
+        localStorage.removeItem(
+            "cyberLoggedIn"
+        );
+
+        showLogin();
+
+    }
+);
+
+
+
+/* =====================================================
+   PHONE NUMBER CHECKER
+===================================================== */
+
+
+/*
+ IMPORTANT:
+
+ Replace YOUR_IPQS_API_KEY with your
+ IPQualityScore API key.
+
+ Example:
+
+ const API_KEY = "abc123xyz";
+
+ For production, DO NOT expose this key
+ in public GitHub JavaScript.
+*/
+
+
+const API_KEY =
+    "YOUR_IPQS_API_KEY";
+
+
+document
+.getElementById("phoneCheckForm")
+.addEventListener(
+    "submit",
+    async function(e) {
+
+        e.preventDefault();
+
+
+        const phone =
+            document
+            .getElementById("phoneNumber")
+            .value
+            .trim();
+
+
+        const result =
+            document
+            .getElementById("phoneResult");
+
+
+        /* Indian number validation */
+
+        if (
+            !/^[6-9][0-9]{9}$/.test(phone)
+        ) {
+
+            result.className =
+                "phone-result-box status-error";
+
+            result.classList.remove("hidden");
+
+
+            result.innerHTML = `
+
+                ❌
+                <strong>
+                    Invalid Indian Mobile Number
+                </strong>
+
+                <br><br>
+
+                Please enter a valid
+                10-digit number starting
+                with 6, 7, 8 or 9.
+
+            `;
+
+            return;
+
+        }
+
+
+        /* API key check */
+
+        if (
+            API_KEY ===
+            "YOUR_IPQS_API_KEY"
+        ) {
+
+            result.className =
+                "phone-result-box status-risk";
+
+            result.classList.remove("hidden");
+
+
+            result.innerHTML = `
+
+                ⚠️
+                <strong>
+                    API KEY NOT ADDED
+                </strong>
+
+                <br><br>
+
+                Add your IPQualityScore API key
+                inside the JavaScript code before
+                using real-time phone checking.
+
+            `;
+
+            return;
+
+        }
+
+
+        /* Loading */
+
+        result.className =
+            "phone-result-box status-risk";
+
+        result.classList.remove("hidden");
+
+
+        result.innerHTML = `
+
+            🔎
+            <strong>
+                Checking Number...
+            </strong>
+
+            <br><br>
+
+            Please wait.
+
+        `;
+
+
+        try {
+
+
+            const apiURL =
+                "https://www.ipqualityscore.com/api/json/phone/"
+                +
+                API_KEY
+                +
+                "/+91"
+                +
+                phone
+                +
+                "?country[]=IN";
+
+
+            const response =
+                await fetch(apiURL);
+
+
+            const data =
+                await response.json();
+
+
+            /* API error */
+
+            if (
+                data.success === false
+            ) {
+
+                throw new Error(
+                    data.message ||
+                    "API verification failed"
+                );
+
+            }
+
+
+            /* =====================================
+               SPAM / HIGH RISK
+            ===================================== */
+
+
+            if (
+                data.spammer === true
+                ||
+                data.recent_abuse === true
+                ||
+                Number(data.fraud_score) >= 90
+            ) {
+
+                result.className =
+                    "phone-result-box status-spam";
+
+
+                result.innerHTML = `
+
+                    🔴
+                    <strong>
+                        SPAM / HIGH RISK NUMBER
+                    </strong>
+
+                    <br><br>
+
+                    <strong>
+                        Number:
+                    </strong>
+                    +91 ${phone}
+
+                    <br>
+
+                    <strong>
+                        Valid:
+                    </strong>
+                    ${data.valid ? "Yes" : "No"}
+
+                    <br>
+
+                    <strong>
+                        Spam Report:
+                    </strong>
+                    ${data.spammer ? "YES" : "No"}
+
+                    <br>
+
+                    <strong>
+                        Recent Abuse:
+                    </strong>
+                    ${data.recent_abuse ? "YES" : "No"}
+
+                    <br>
+
+                    <strong>
+                        Fraud Score:
+                    </strong>
+                    ${data.fraud_score ?? "N/A"}
+
+                    <br>
+
+                    <strong>
+                        Carrier:
+                    </strong>
+                    ${data.carrier || "Unknown"}
+
+                    <br>
+
+                    <strong>
+                        Line Type:
+                    </strong>
+                    ${data.line_type || "Unknown"}
+
+                    <br><br>
+
+                    ⚠️ Do not share OTP,
+                    PIN, CVV, password or
+                    banking information.
+
+                `;
+
+                return;
+
+            }
+
+
+            /* =====================================
+               RISKY
+            ===================================== */
+
+
+            if (
+                Number(data.fraud_score) >= 75
+            ) {
+
+                result.className =
+                    "phone-result-box status-risk";
+
+
+                result.innerHTML = `
+
+                    🟠
+                    <strong>
+                        SUSPICIOUS / RISKY NUMBER
+                    </strong>
+
+                    <br><br>
+
+                    <strong>
+                        Number:
+                    </strong>
+                    +91 ${phone}
+
+                    <br>
+
+                    <strong>
+                        Valid:
+                    </strong>
+                    ${data.valid ? "Yes" : "No"}
+
+                    <br>
+
+                    <strong>
+                        Fraud Score:
+                    </strong>
+                    ${data.fraud_score}
+
+                    <br>
+
+                    <strong>
+                        Recent Abuse:
+                    </strong>
+                    ${data.recent_abuse ? "YES" : "No"}
+
+                    <br>
+
+                    <strong>
+                        Carrier:
+                    </strong>
+                    ${data.carrier || "Unknown"}
+
+                    <br>
+
+                    <strong>
+                        Line Type:
+                    </strong>
+                    ${data.line_type || "Unknown"}
+
+                    <br><br>
+
+                    ⚠️ Be careful with this number.
+
+                `;
+
+                return;
+
+            }
+
+
+            /* =====================================
+               VALID / LOW RISK
+            ===================================== */
+
+
+            if (
+                data.valid === true
+            ) {
+
+                result.className =
+                    "phone-result-box status-safe";
+
+
+                result.innerHTML = `
+
+                    🟢
+                    <strong>
+                        VALID / LOW RISK NUMBER
+                    </strong>
+
+                    <br><br>
+
+                    <strong>
+                        Number:
+                    </strong>
+                    +91 ${phone}
+
+                    <br>
+
+                    <strong>
+                        Valid:
+                    </strong>
+                    YES
+
+                    <br>
+
+                    <strong>
+                        Spam Report:
+                    </strong>
+                    ${data.spammer ? "YES" : "No"}
+
+                    <br>
+
+                    <strong>
+                        Fraud Score:
+                    </strong>
+                    ${data.fraud_score ?? "N/A"}
+
+                    <br>
+
+                    <strong>
+                        Carrier:
+                    </strong>
+                    ${data.carrier || "Unknown"}
+
+                    <br>
+
+                    <strong>
+                        Line Type:
+                    </strong>
+                    ${data.line_type || "Unknown"}
+
+                    <br>
+
+                    <strong>
+                        Active:
+                    </strong>
+                    ${
+                        data.active === true
+                        ? "YES"
+                        : "Unknown"
+                    }
+
+                    <br><br>
+
+                    ✅ No major spam/risk signal
+                    was detected by the API.
+
+                    <br><br>
+
+                    <small>
+
+                        This does NOT guarantee that
+                        the person is genuine or
+                        trustworthy.
+
+                    </small>
+
+                `;
+
+                return;
+
+            }
+
+
+            /* UNKNOWN */
+
+            result.className =
+                "phone-result-box status-risk";
+
+
+            result.innerHTML = `
+
+                🟠
+                <strong>
+                    UNABLE TO CONFIRM
+                </strong>
+
+                <br><br>
+
+                The API could not confidently
+                classify this number.
+
+                Please stay cautious.
+
+            `;
+
+
+        }
+
+
+        catch(error) {
+
+            console.error(error);
+
+
+            result.className =
+                "phone-result-box status-error";
+
+
+            result.classList.remove("hidden");
+
+
+            result.innerHTML = `
+
+                ❌
+                <strong>
+                    Verification Failed
+                </strong>
+
+                <br><br>
+
+                Could not connect to the
+                phone verification service.
+
+                <br><br>
+
+                Check your API key,
+                internet connection and
+                API account.
+
+            `;
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   CYBER GUIDANCE
+===================================================== */
+
+
+document
+.getElementById("cyberForm")
+.addEventListener(
+    "submit",
+    function(e) {
+
+        e.preventDefault();
+
+
+        const issue =
+            document
+            .getElementById("issueType")
+            .value;
+
+
+        const resultBox =
+            document
+            .getElementById("guidanceResult");
+
+
+        const title =
+            document
+            .getElementById("guidanceTitle");
+
+
+        const steps =
+            document
+            .getElementById("guidanceSteps");
+
+
+        const guides = {
+
+
+            "fake-account": {
+
+                title:
+                    "👤 Fake Account / Impersonation",
+
+                steps: [
+
+                    "Take screenshots of the fake account.",
+
+                    "Report the profile on the platform.",
+
+                    "Inform friends and family.",
+
+                    "Do not send money to the fake account.",
+
+                    "Keep screenshots and other evidence."
+
+                ]
+
+            },
+
+
+            "suspicious-link": {
+
+                title:
+                    "🔗 Suspicious Link / Phishing",
+
+                steps: [
+
+                    "Do NOT click the suspicious link.",
+
+                    "Never enter OTP, password, PIN or CVV.",
+
+                    "Check the website address carefully.",
+
+                    "If you entered a password, change it immediately.",
+
+                    "Enable Two-Factor Authentication."
+
+                ]
+
+            },
+
+
+            "online-fraud": {
+
+                title:
+                    "💳 Online Fraud",
+
+                steps: [
+
+                    "Contact your bank/payment provider immediately.",
+
+                    "Call National Cyber Crime Helpline 1930.",
+
+                    "Report at cybercrime.gov.in.",
+
+                    "Keep transaction ID/UTR and screenshots.",
+
+                    "Do not send additional money to the fraudster."
+
+                ]
+
+            },
+
+
+            "hacked-account": {
+
+                title:
+                    "🔐 Hacked Account",
+
+                steps: [
+
+                    "Change your password immediately.",
+
+                    "Enable Two-Factor Authentication.",
+
+                    "Log out from unknown devices.",
+
+                    "Check recovery email and mobile number.",
+
+                    "Contact the platform's official support."
+
+                ]
+
+            }
+
+        };
+
+
+        const guide =
+            guides[issue];
+
+
+        if (!guide) {
+            return;
+        }
+
+
+        title.innerText =
+            guide.title;
+
+
+        steps.innerHTML = "";
+
+
+        const ul =
+            document.createElement("ul");
+
+
+        guide.steps.forEach(
+            function(step) {
+
+                const li =
+                    document.createElement("li");
+
+                li.innerText =
+                    step;
+
+                ul.appendChild(li);
+
+            }
+        );
+
+
+        steps.appendChild(ul);
+
+
+        resultBox.classList.remove(
+            "hidden"
+        );
+
+
+        resultBox.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }
+);
+
+</script>
 
 </body>
-
 </html>
