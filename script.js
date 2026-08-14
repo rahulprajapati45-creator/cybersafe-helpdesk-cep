@@ -1,3 +1,29 @@
+// 1. Phone Number Fraud Checker Logic
+document.getElementById('phoneCheckForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const phone = document.getElementById('phoneNumber').value.trim();
+    const resultBox = document.getElementById('phoneResult');
+
+    // Mock Database for testing
+    const reportedFraudNumbers = ['9876543210', '9123456789', '8888888888', '9999999999'];
+    const verifiedSafeNumbers = ['1800111111', '1930000000', '9000000000'];
+
+    resultBox.classList.remove('hidden', 'status-safe', 'status-fraud', 'status-unknown');
+
+    if (reportedFraudNumbers.includes(phone)) {
+        resultBox.classList.add('status-fraud');
+        resultBox.innerHTML = `⚠️ <strong>WARNING:</strong> Number ${phone} has been reported for <strong>ONLINE FRAUD / SCAM</strong> multiple times! Do not transfer money or share OTP.`;
+    } else if (verifiedSafeNumbers.includes(phone)) {
+        resultBox.classList.add('status-safe');
+        resultBox.innerHTML = `✅ <strong>VERIFIED SAFE:</strong> Number ${phone} belongs to an officially recognized organization/helpline.`;
+    } else {
+        resultBox.classList.add('status-unknown');
+        resultBox.innerHTML = `ℹ️ <strong>UNVERIFIED NUMBER:</strong> Number ${phone} is not listed in our fraud database yet. Always stay cautious and never share personal information or OTP.`;
+    }
+});
+
+// 2. Cyber Issue Guidance Logic
 document.getElementById('cyberForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -6,58 +32,46 @@ document.getElementById('cyberForm').addEventListener('submit', function(e) {
     const title = document.getElementById('guidanceTitle');
     const steps = document.getElementById('guidanceSteps');
 
-    // Database of Safety Steps
     const safetyGuides = {
         'fake-account': {
             title: 'Action Steps for Fake Account / Impersonation:',
-            steps: [
-                '<strong>Report Profile:</strong> Platform (Instagram, Facebook, Twitter, etc.) ke report feature par jaakar "Impersonation / Fake Account" report karein.',
-                '<strong>Inform Contacts:</strong> Apne dosto aur family ko aware karein ki is fake account dwara bheje gaye kisi message/money request ka reply na karein.',
-                '<strong>Take Screenshots:</strong> Fake profile ke URL aur messages ka screenshot lekar proof ke taur par rakhein.'
-            ]
+            steps: ['Report profile on platform.', 'Inform your friends not to send money.', 'Take screenshots as proof.']
         },
         'suspicious-link': {
-            title: 'Action Steps for Suspicious Link / Phishing:',
-            steps: [
-                '<strong>Do NOT Open:</strong> Us link par click bilkul na karein.',
-                '<strong>Clear Cache:</strong> Agar link galti se khol diya hai, toh turant browser data/cookies clear karein.',
-                '<strong>Do NOT Share OTP:</strong> Koi bhi sensitive details, passwords, ya OTP wahan enter na karein.',
-                '<strong>Scan Device:</strong> Apne phone ya computer par ek baar Antivirus scan run karein.'
-            ]
+            title: 'Action Steps for Suspicious Link:',
+            steps: ['Do NOT click or open the link.', 'Clear browser cache if clicked.', 'Never enter password or OTP.']
         },
         'online-fraud': {
             title: 'Action Steps for Online Financial Fraud:',
-            steps: [
-                '<strong>Block Cards/Banking:</strong> Turant apne bank ko call karke debit/credit cards aur net banking block karwayein.',
-                '<strong>Call 1930:</strong> Immediate financial recovery ke liye National Cyber Crime Helpline Number <strong>1930</strong> par call karein.',
-                '<strong>Report Online:</strong> Cybercrime portal (cybercrime.gov.in) par transaction details ke saath complaint register karein.'
-            ]
+            steps: ['Immediately block cards/bank account.', 'Call Helpline 1930 for financial recovery.', 'Report at cybercrime.gov.in.']
         },
         'hacked-account': {
             title: 'Action Steps for Hacked Account:',
-            steps: [
-                '<strong>Reset Password:</strong> Agar account access ho raha hai, toh turant strong password lagayein.',
-                '<strong>Account Recovery:</strong> Agar lock out ho gaye hain, toh platform ke "Forgot Password" ya "Account Recovery" page par jayein.',
-                '<strong>Turn On 2FA:</strong> Two-Factor Authentication (2FA) ko enable karein.',
-                '<strong>Log Out All Devices:</strong> Settings mein jaakar "Log out of all session/devices" select karein.'
-            ]
+            steps: ['Reset password immediately.', 'Turn on Two-Factor Authentication (2FA).', 'Log out from all devices.']
         }
     };
 
     if (safetyGuides[issue]) {
         title.innerText = safetyGuides[issue].title;
-        
         let ul = document.createElement('ul');
         safetyGuides[issue].steps.forEach(step => {
             let li = document.createElement('li');
             li.innerHTML = step;
             ul.appendChild(li);
         });
-
         steps.innerHTML = '';
         steps.appendChild(ul);
-        
         resultBox.classList.remove('hidden');
-        resultBox.scrollIntoView({ behavior: 'smooth' });
     }
+});
+
+// 3. Login Modal Toggle Logic
+const loginModal = document.getElementById('loginModal');
+document.getElementById('openLoginBtn').addEventListener('click', () => loginModal.classList.remove('hidden'));
+document.getElementById('closeLoginBtn').addEventListener('click', () => loginModal.classList.add('hidden'));
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Login Successful!');
+    loginModal.classList.add('hidden');
 });
