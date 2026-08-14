@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +12,101 @@
 
     <!-- Header Section -->
     <header>
+        <div class="logo">Cyber<span>Shield</span> Helpdesk</div>
+        <nav>
+            <a href="#checker">Number Checker</a>
+            <a href="#guidance">Get Help</a>
+            <button id="openLoginBtn" class="btn-login">Login</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Verify Numbers & Get Instant Cyber Help</h1>
+        <p>Check suspicious mobile numbers or select your issue for step-by-step guidance.</p>
+    </section>
+
+    <!-- Feature 1: Mobile Number Fraud Checker -->
+    <section id="checker" class="container">
+        <h2>Mobile Number Fraud Checker</h2>
+        <p class="sub-text">Check if a calling or messaging number has been reported for scams or fraud.</p>
+        
+        <form id="phoneCheckForm">
+            <div class="form-group">
+                <label for="phoneNumber">Enter 10-Digit Mobile Number:</label>
+                <div class="input-with-btn">
+                    <input type="tel" id="phoneNumber" placeholder="e.g. 9876543210" pattern="[0-9]{10}" maxlength="10" required>
+                    <button type="submit" class="check-btn">Check Number</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Phone Result Display -->
+        <div id="phoneResult" class="phone-result-box hidden"></div>
+    </section>
+
+    <!-- Feature 2: Interactive Helpdesk Section -->
+    <section id="guidance" class="container">
+        <h2>Select Your Problem</h2>
+        <form id="cyberForm">
+            <div class="form-group">
+                <label for="issueType">What problem are you facing?</label>
+                <select id="issueType" required>
+                    <option value="" disabled selected>-- Select an Issue --</option>
+                    <option value="fake-account">Fake Account / Impersonation</option>
+                    <option value="suspicious-link">Suspicious Link / Phishing</option>
+                    <option value="online-fraud">Online Financial Fraud</option>
+                    <option value="hacked-account">Hacked Account</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="details">Additional Details (Optional):</label>
+                <textarea id="details" rows="3" placeholder="Briefly describe what happened..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Get Instant Guidance</button>
+        </form>
+
+        <div id="guidanceResult" class="guidance-box hidden">
+            <h3 id="guidanceTitle"></h3>
+            <div id="guidanceSteps"></div>
+            <div class="alert-note">
+                <strong>Emergency Action:</strong> If you lost money, immediately call the National Cyber Crime Helpline at <strong>1930</strong> or report at <strong>cybercrime.gov.in</strong>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal Pop-up -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeLoginBtn" class="close-btn">&times;</span>
+            <h2>Login to Helpdesk</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="enter password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Helpline Footer Section -->
+    <section id="helpline" class="emergency-sec">
+        <h2>Need Further Assistance?</h2>
+        <p>National Cyber Crime Helpline Number: <strong>1930</strong></p>
+        <p>Report online at: <strong>www.cybercrime.gov.in</strong></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Cyber Safety Helpdesk. Empowering Safe Digital Communities.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
