@@ -2,521 +2,183 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: #f4f7f6;
-    color: #1e293b;
+    background-color: #f4f7f6;
+    color: #333;
     line-height: 1.6;
 }
 
-.hidden {
-    display: none !important;
-}
-
-
-/* ================= LOGIN ================= */
-
-.login-page {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f172a, #0369a1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.login-card {
-    width: 100%;
-    max-width: 420px;
-    background: white;
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    text-align: center;
-}
-
-.shield {
-    font-size: 55px;
-}
-
-.login-card h1 {
-    margin: 10px 0;
-    color: #0f172a;
-}
-
-.login-card > p {
-    color: #64748b;
-    margin-bottom: 20px;
-}
-
-.login-card form {
-    text-align: left;
-}
-
-.login-card label {
-    display: block;
-    margin: 12px 0 6px;
-    font-weight: 600;
-}
-
-.login-card input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 7px;
-    font-size: 16px;
-}
-
-.login-card button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 13px;
-    background: #0284c7;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-/* ================= HEADER ================= */
-
 header {
-    background: #0f172a;
-    color: white;
-    padding: 18px 5%;
+    background-color: #0f172a;
+    color: #fff;
+    padding: 1.2rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
 }
 
-.logo {
-    font-size: 23px;
-    font-weight: bold;
-}
+header .logo span { color: #38bdf8; font-weight: bold; }
 
-.logo span {
-    color: #38bdf8;
-}
+nav a { color: white; text-decoration: none; margin-right: 15px; }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: #38bdf8;
-}
-
-nav button {
+.btn-login {
+    background-color: #38bdf8;
+    color: #0f172a;
     border: none;
-    background: #ef4444;
-    color: white;
-    padding: 8px 13px;
-    border-radius: 5px;
+    padding: 8px 18px;
+    font-weight: bold;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-
-/* ================= HERO ================= */
-
 .hero {
-    background: linear-gradient(135deg, #1e293b, #075985);
+    background: #1e293b;
     color: white;
     text-align: center;
-    padding: 80px 20px;
+    padding: 50px 20px;
 }
 
-.hero-content {
-    max-width: 850px;
-    margin: auto;
+.container {
+    max-width: 750px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.badge {
-    display: inline-block;
-    background: #e0f2fe;
-    color: #0369a1;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
+.sub-text {
+    font-size: 0.95rem;
+    color: #64748b;
     margin-bottom: 15px;
 }
 
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 15px;
+.form-group { margin-bottom: 20px; }
+
+label { display: block; font-weight: 600; margin-bottom: 8px; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
 }
 
-.hero p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: auto;
+.input-with-btn {
+    display: flex;
+    gap: 10px;
 }
 
-.hero-buttons {
-    margin-top: 30px;
-}
-
-.hero-btn {
-    display: inline-block;
-    background: #0284c7;
+.check-btn {
+    background-color: #0284c7;
     color: white;
-    padding: 12px 22px;
-    margin: 5px;
-    border-radius: 7px;
-    text-decoration: none;
+    border: none;
+    padding: 12px 20px;
     font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-.hero-btn.secondary {
-    background: #ef4444;
+.submit-btn {
+    width: 100%;
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-
-/* ================= SECTIONS ================= */
-
-.section {
-    max-width: 1000px;
-    margin: 35px auto;
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-}
-
-.section h2 {
-    color: #0f172a;
-    margin-bottom: 20px;
-}
-
-.about-box {
-    background: #f0f9ff;
-    padding: 20px;
-    border-left: 5px solid #0284c7;
-    border-radius: 7px;
-}
-
-.about-box p {
-    margin-bottom: 10px;
-}
-
-
-/* ================= CHECKER ================= */
-
-.checker-box,
-.help-box {
-    background: #f8fafc;
-    padding: 25px;
-    border-radius: 10px;
-}
-
-.checker-box label,
-.help-box label {
-    display: block;
-    margin-top: 18px;
-    margin-bottom: 7px;
+/* Phone Checker Result Styling */
+.phone-result-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
     font-weight: 600;
 }
 
-.checker-box input,
-.help-box select,
-.help-box textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #cbd5e1;
-    border-radius: 7px;
-    font-size: 16px;
-}
-
-.checker-box button,
-.help-box button {
-    width: 100%;
-    margin-top: 18px;
-    padding: 13px;
-    border: none;
-    border-radius: 7px;
-    background: #0284c7;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.checker-box button:hover,
-.help-box button:hover {
-    background: #0369a1;
-}
-
-
-/* ================= SPAM RESULT ================= */
-
-.spam-result {
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 17px;
-}
-
-.spam-result h3 {
-    margin-bottom: 10px;
-}
-
-.spam-result p {
-    margin: 8px 0;
-}
-
-.spam-danger {
-    background: #fee2e2;
-    border: 2px solid #ef4444;
-    color: #991b1b;
-}
-
-.spam-safe {
-    background: #dcfce7;
-    border: 2px solid #22c55e;
+.status-safe {
+    background-color: #dcfce7;
+    border: 1px solid #86efac;
     color: #166534;
 }
 
-.spam-unknown {
-    background: #fef3c7;
-    border: 2px solid #f59e0b;
+.status-fraud {
+    background-color: #fee2e2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}
+
+.status-unknown {
+    background-color: #fef3c7;
+    border: 1px solid #fcd34d;
     color: #92400e;
 }
 
-.spam-result a {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 9px 15px;
-    background: #0284c7;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
+/* Modal / Pop-up Window Styling */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.warning {
-    margin-top: 20px;
-    padding: 15px;
-    background: #fff7ed;
-    border: 1px solid #fdba74;
-    color: #9a3412;
-    border-radius: 7px;
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
 }
 
-
-/* ================= GUIDANCE ================= */
-
-.guidance {
-    margin-top: 25px;
-    padding: 20px;
-    background: #eff6ff;
-    border-left: 5px solid #0284c7;
-    border-radius: 7px;
-}
-
-.guidance h3 {
-    color: #0369a1;
-    margin-bottom: 12px;
-}
-
-.guidance li {
-    margin: 10px 0;
-}
-
-
-/* ================= SAFETY TIPS ================= */
-
-.tips-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.tip {
-    padding: 22px;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    background: #f8fafc;
-}
-
-.tip span {
-    font-size: 35px;
-}
-
-.tip h3 {
-    margin: 8px 0;
-}
-
-
-/* ================= COMMUNITY ================= */
-
-.community {
-    text-align: center;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 25px;
-}
-
-.card {
-    padding: 25px;
-    background: #f8fafc;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-}
-
-.card span {
-    font-size: 38px;
-}
-
-.card h3 {
-    margin: 10px 0;
-}
-
-
-/* ================= OFFICIAL ================= */
-
-.official {
-    text-align: center;
-    background: #e0f2fe;
-    padding: 40px 20px;
-}
-
-.official a {
-    display: inline-block;
-    margin-top: 18px;
-    background: #0284c7;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-
-/* ================= EMERGENCY ================= */
-
-.emergency {
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    padding: 45px 20px;
-}
-
-.emergency h2 {
-    margin-bottom: 12px;
-}
-
-.emergency-buttons {
-    margin-top: 20px;
-}
-
-.emergency-buttons a {
-    display: inline-block;
-    margin: 5px;
-    padding: 12px 20px;
-    border-radius: 7px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-.emergency-buttons a:first-child {
-    background: #dc2626;
-}
-
-.emergency-buttons a:last-child {
-    background: #0284c7;
-}
-
-
-/* ================= FAQ ================= */
-
-.faq details {
-    border: 1px solid #e2e8f0;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 7px;
-    background: #f8fafc;
-}
-
-.faq summary {
+.close-btn {
+    position: absolute;
+    right: 15px; top: 10px;
+    font-size: 24px;
     cursor: pointer;
-    font-weight: bold;
 }
 
-.faq p {
-    margin-top: 10px;
+.guidance-box {
+    margin-top: 30px;
+    padding: 20px;
+    border-left: 5px solid #0284c7;
+    background-color: #f0f9ff;
+    border-radius: 4px;
 }
 
+.alert-note {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
 
-/* ================= FOOTER ================= */
+.emergency-sec {
+    background-color: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+}
 
 footer {
-    background: #0284c7;
-    color: white;
     text-align: center;
-    padding: 25px;
+    padding: 15px;
+    background-color: #0284c7;
+    color: white;
 }
 
-footer p {
-    margin-top: 5px;
-}
+.hidden { display: none !important; }
 
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav {
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .section {
-        margin: 20px 12px;
-        padding: 22px;
-    }
-
-    .tips-grid,
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        padding: 60px 18px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
-}
