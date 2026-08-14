@@ -1,112 +1,734 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Safety Helpdesk & Fraud Checker</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Cyber Safety Helpdesk
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
 </head>
+
+
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <div class="logo">Cyber<span>Shield</span> Helpdesk</div>
-        <nav>
-            <a href="#checker">Number Checker</a>
-            <a href="#guidance">Get Help</a>
-            <button id="openLoginBtn" class="btn-login">Login</button>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Verify Numbers & Get Instant Cyber Help</h1>
-        <p>Check suspicious mobile numbers or select your issue for step-by-step guidance.</p>
-    </section>
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
 
-    <!-- Feature 1: Mobile Number Fraud Checker -->
-    <section id="checker" class="container">
-        <h2>Mobile Number Fraud Checker</h2>
-        <p class="sub-text">Check if a calling or messaging number has been reported for scams or fraud.</p>
-        
-        <form id="phoneCheckForm">
-            <div class="form-group">
-                <label for="phoneNumber">Enter 10-Digit Mobile Number:</label>
-                <div class="input-with-btn">
-                    <input type="tel" id="phoneNumber" placeholder="e.g. 9876543210" pattern="[0-9]{10}" maxlength="10" required>
-                    <button type="submit" class="check-btn">Check Number</button>
-                </div>
-            </div>
+<div
+    id="loginPage"
+    class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            Cyber<span>Shield</span>
+        </div>
+
+        <h1>
+            Cyber Safety Helpdesk
+        </h1>
+
+        <p>
+            Login to access the Cyber Safety Helpdesk
+        </p>
+
+
+        <form id="loginForm">
+
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required>
+
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required>
+
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                Login
+
+            </button>
+
         </form>
 
-        <!-- Phone Result Display -->
-        <div id="phoneResult" class="phone-result-box hidden"></div>
-    </section>
 
-    <!-- Feature 2: Interactive Helpdesk Section -->
-    <section id="guidance" class="container">
-        <h2>Select Your Problem</h2>
-        <form id="cyberForm">
-            <div class="form-group">
-                <label for="issueType">What problem are you facing?</label>
-                <select id="issueType" required>
-                    <option value="" disabled selected>-- Select an Issue --</option>
-                    <option value="fake-account">Fake Account / Impersonation</option>
-                    <option value="suspicious-link">Suspicious Link / Phishing</option>
-                    <option value="online-fraud">Online Financial Fraud</option>
-                    <option value="hacked-account">Hacked Account</option>
-                </select>
-            </div>
+        <p class="demo-login">
+            Demo: Enter any valid email and password
+        </p>
 
-            <div class="form-group">
-                <label for="details">Additional Details (Optional):</label>
-                <textarea id="details" rows="3" placeholder="Briefly describe what happened..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Get Instant Guidance</button>
-        </form>
-
-        <div id="guidanceResult" class="guidance-box hidden">
-            <h3 id="guidanceTitle"></h3>
-            <div id="guidanceSteps"></div>
-            <div class="alert-note">
-                <strong>Emergency Action:</strong> If you lost money, immediately call the National Cyber Crime Helpline at <strong>1930</strong> or report at <strong>cybercrime.gov.in</strong>.
-            </div>
-        </div>
-    </section>
-
-    <!-- Login Modal Pop-up -->
-    <div id="loginModal" class="modal hidden">
-        <div class="modal-content">
-            <span id="closeLoginBtn" class="close-btn">&times;</span>
-            <h2>Login to Helpdesk</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="enter password" required>
-                </div>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
-        </div>
     </div>
 
-    <!-- Helpline Footer Section -->
-    <section id="helpline" class="emergency-sec">
-        <h2>Need Further Assistance?</h2>
-        <p>National Cyber Crime Helpline Number: <strong>1930</strong></p>
-        <p>Report online at: <strong>www.cybercrime.gov.in</strong></p>
+</div>
+
+
+
+<!-- =====================================================
+     MAIN HOME PAGE
+===================================================== -->
+
+<div
+    id="homePage"
+    class="hidden">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            Cyber<span>Shield</span> Helpdesk
+        </div>
+
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#checker">
+                Number Checker
+            </a>
+
+            <a href="#guidance">
+                Get Help
+            </a>
+
+            <a href="#helpdesk">
+                Help Desk Day
+            </a>
+
+
+            <button
+                id="logoutBtn"
+                class="logout-btn">
+
+                Logout
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =================================================
+         HERO
+    ================================================= -->
+
+    <section
+        id="home"
+        class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                CYBER SAFETY AWARENESS
+            </span>
+
+            <h1>
+                Cyber Safety Helpdesk
+            </h1>
+
+            <p>
+                Verify suspicious numbers, get basic cyber-safety
+                guidance and learn how to stay safe online.
+            </p>
+
+        </div>
+
     </section>
 
+
+
+    <!-- =================================================
+         ABOUT
+    ================================================= -->
+
+    <section class="container about-section">
+
+        <h2>
+            🛡️ About Cyber Safety Helpdesk
+        </h2>
+
+        <p>
+            Cyber Safety Helpdesk helps users understand and
+            respond to common cyber-safety problems.
+        </p>
+
+        <p>
+            Users can select their problem such as
+            <strong>Fake Account</strong>,
+            <strong>Suspicious Link</strong>,
+            <strong>Online Fraud</strong> or
+            <strong>Hacked Account</strong>
+            and receive basic safety guidance.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MOBILE NUMBER CHECKER
+    ================================================= -->
+
+    <section
+        id="checker"
+        class="container">
+
+        <h2>
+            📱 Mobile Number Fraud Checker
+        </h2>
+
+        <p class="sub-text">
+
+            Enter a 10-digit mobile number to continue
+            to the official cybercrime suspect repository.
+
+        </p>
+
+
+        <form id="phoneCheckForm">
+
+
+            <label for="phoneNumber">
+
+                Enter 10-Digit Mobile Number
+
+            </label>
+
+
+            <div class="input-with-btn">
+
+                <input
+                    type="tel"
+                    id="phoneNumber"
+                    placeholder="9876543210"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="check-btn">
+
+                    Check Number
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div
+            id="phoneResult"
+            class="phone-result-box hidden">
+        </div>
+
+
+        <div class="checker-note">
+
+            <strong>Important:</strong>
+
+            An unlisted number cannot be guaranteed
+            to be completely safe.
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CYBER PROBLEM GUIDANCE
+    ================================================= -->
+
+    <section
+        id="guidance"
+        class="container">
+
+        <h2>
+            🚨 Select Your Cyber Problem
+        </h2>
+
+        <p class="sub-text">
+
+            Select your problem to receive basic
+            step-by-step safety guidance.
+
+        </p>
+
+
+        <form id="cyberForm">
+
+
+            <label for="issueType">
+
+                What problem are you facing?
+
+            </label>
+
+
+            <select
+                id="issueType"
+                required>
+
+                <option value="">
+                    -- Select Your Problem --
+                </option>
+
+                <option value="fake-account">
+                    👤 Fake Account / Impersonation
+                </option>
+
+                <option value="suspicious-link">
+                    🔗 Suspicious Link / Phishing
+                </option>
+
+                <option value="online-fraud">
+                    💳 Online Fraud
+                </option>
+
+                <option value="hacked-account">
+                    🔐 Hacked Account
+                </option>
+
+            </select>
+
+
+
+            <label for="details">
+
+                Additional Details (Optional)
+
+            </label>
+
+
+            <textarea
+                id="details"
+                rows="4"
+                placeholder="Briefly describe what happened...">
+            </textarea>
+
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Get Safety Guidance
+
+            </button>
+
+        </form>
+
+
+
+        <!-- GUIDANCE RESULT -->
+
+        <div
+            id="guidanceResult"
+            class="guidance-box hidden">
+
+            <h3
+                id="guidanceTitle">
+            </h3>
+
+            <div
+                id="guidanceSteps">
+            </div>
+
+
+            <div class="alert-note">
+
+                <strong>
+                    Emergency Action:
+                </strong>
+
+                If you have lost money due to cyber fraud,
+                immediately call
+
+                <strong>1930</strong>
+
+                and report the incident through
+
+                <strong>cybercrime.gov.in</strong>.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         BASIC CYBER SAFETY TIPS
+    ================================================= -->
+
+    <section class="container">
+
+        <h2>
+            🔐 Basic Cyber Safety Tips
+        </h2>
+
+
+        <div class="tips-grid">
+
+
+            <div class="tip-card">
+
+                <h3>
+                    🔑 Strong Passwords
+                </h3>
+
+                <p>
+                    Use strong and unique passwords.
+                    Never share passwords with anyone.
+                </p>
+
+            </div>
+
+
+
+            <div class="tip-card">
+
+                <h3>
+                    📲 OTP Safety
+                </h3>
+
+                <p>
+                    Never share OTP, PIN or CVV with
+                    unknown people.
+                </p>
+
+            </div>
+
+
+
+            <div class="tip-card">
+
+                <h3>
+                    🔗 Check Links
+                </h3>
+
+                <p>
+                    Avoid clicking unknown or suspicious
+                    links received online.
+                </p>
+
+            </div>
+
+
+
+            <div class="tip-card">
+
+                <h3>
+                    💳 Payment Safety
+                </h3>
+
+                <p>
+                    Verify the receiver before making
+                    online payments.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CYBER HELP DESK DAY
+    ================================================= -->
+
+    <section
+        id="helpdesk"
+        class="helpdesk-day">
+
+
+        <div class="helpdesk-content">
+
+
+            <span class="event-badge">
+
+                COMMUNITY CYBER AWARENESS PROGRAM
+
+            </span>
+
+
+            <h2>
+                🛡️ Cyber Help Desk Day
+            </h2>
+
+
+            <p class="event-main-text">
+
+                Organize a Cyber Help Desk Day where community
+                members can bring their general cyber-safety
+                questions. Students demonstrate the website
+                and provide awareness guidance.
+
+            </p>
+
+
+
+            <!-- COMMUNITY MEMBERS -->
+
+            <div class="event-grid">
+
+
+                <div class="event-card">
+
+                    <h3>
+                        👥 Community Members
+                    </h3>
+
+                    <p>
+
+                        Community members can bring their
+                        general cyber-safety questions and
+                        discuss common online safety concerns.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- STUDENT DEMONSTRATION -->
+
+                <div class="event-card">
+
+                    <h3>
+                        💻 Student Demonstration
+                    </h3>
+
+                    <p>
+
+                        Students demonstrate the Cyber Safety
+                        Helpdesk website and explain how users
+                        can use its safety features.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- AWARENESS GUIDANCE -->
+
+                <div class="event-card">
+
+                    <h3>
+                        📢 Awareness Guidance
+                    </h3>
+
+                    <p>
+
+                        Students provide awareness guidance
+                        about fake accounts, suspicious links,
+                        online fraud, hacked accounts, OTP
+                        safety and secure online practices.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIVITIES -->
+
+            <div class="activities">
+
+                <h3>
+                    📋 Cyber Help Desk Day Activities
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Answer general cyber-safety questions.
+                    </li>
+
+                    <li>
+                        Demonstrate the Cyber Safety Helpdesk website.
+                    </li>
+
+                    <li>
+                        Explain how to identify suspicious links.
+                    </li>
+
+                    <li>
+                        Explain how to identify fake accounts.
+                    </li>
+
+                    <li>
+                        Provide awareness about online fraud prevention.
+                    </li>
+
+                    <li>
+                        Explain basic account-security practices.
+                    </li>
+
+                    <li>
+                        Guide users about official cybercrime reporting.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- EVENT PURPOSE -->
+
+            <div class="event-purpose">
+
+                <h3>
+                    🎯 Purpose of the Help Desk Day
+                </h3>
+
+                <p>
+
+                    The purpose is to increase community awareness
+                    about cyber safety and help people understand
+                    basic steps they can take to protect their
+                    personal information and online accounts.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         OFFICIAL CYBER CRIME
+    ================================================= -->
+
+    <section class="official-section">
+
+        <h2>
+            🇮🇳 Official Cyber Crime Help
+        </h2>
+
+        <p>
+
+            For official cybercrime reporting and related
+            services, visit the National Cyber Crime
+            Reporting Portal.
+
+        </p>
+
+
+        <a
+            href="https://www.cybercrime.gov.in/"
+            target="_blank"
+            class="official-btn">
+
+            Open Official Cyber Crime Portal
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =================================================
+         EMERGENCY
+    ================================================= -->
+
+    <section class="emergency-sec">
+
+        <h2>
+            🚨 Need Immediate Assistance?
+        </h2>
+
+        <p>
+
+            National Cyber Crime Helpline:
+            <strong>1930</strong>
+
+        </p>
+
+        <p>
+
+            Report Online:
+            <strong>cybercrime.gov.in</strong>
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
+
     <footer>
-        <p>&copy; 2026 Cyber Safety Helpdesk. Empowering Safe Digital Communities.</p>
+
+        <p>
+
+            © 2026 Cyber Safety Helpdesk.
+            Empowering Safe Digital Communities.
+
+        </p>
+
     </footer>
 
-    <script src="script.js"></script>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
