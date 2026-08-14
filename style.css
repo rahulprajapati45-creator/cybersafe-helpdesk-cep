@@ -1,183 +1,1158 @@
+/* =====================================================
+   GENERAL
+===================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 }
 
 body {
-    background-color: #f4f7f6;
-    color: #333;
+    background: #f1f5f9;
+    color: #1e293b;
     line-height: 1.6;
 }
 
-header {
-    background-color: #0f172a;
-    color: #fff;
-    padding: 1.2rem 5%;
+.hidden {
+    display: none !important;
+}
+
+
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+.login-page {
+
+    min-height: 100vh;
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content: center;
+
     align-items: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #0369a1
+        );
 }
 
-header .logo span { color: #38bdf8; font-weight: bold; }
 
-nav a { color: white; text-decoration: none; margin-right: 15px; }
+.login-card {
 
-.btn-login {
-    background-color: #38bdf8;
-    color: #0f172a;
-    border: none;
-    padding: 8px 18px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    width: 100%;
 
-.hero {
-    background: #1e293b;
-    color: white;
+    max-width: 430px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
     text-align: center;
-    padding: 50px 20px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.25);
 }
 
-.container {
-    max-width: 750px;
-    margin: 30px auto;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
 
-.sub-text {
-    font-size: 0.95rem;
-    color: #64748b;
+.login-logo {
+
+    font-size: 32px;
+
+    font-weight: bold;
+
     margin-bottom: 15px;
 }
 
-.form-group { margin-bottom: 20px; }
 
-label { display: block; font-weight: 600; margin-bottom: 8px; }
+.login-logo span {
 
-input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 1rem;
+    color: #0284c7;
+
 }
 
-.input-with-btn {
-    display: flex;
-    gap: 10px;
+
+.login-card h1 {
+
+    margin-bottom: 8px;
+
 }
 
-.check-btn {
-    background-color: #0284c7;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    white-space: nowrap;
+
+.login-card > p {
+
+    color: #64748b;
+
+    margin-bottom: 25px;
+
 }
 
-.submit-btn {
-    width: 100%;
-    background-color: #0284c7;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-}
 
-/* Phone Checker Result Styling */
-.phone-result-box {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 6px;
+.login-card label {
+
+    display: block;
+
+    text-align: left;
+
     font-weight: 600;
+
+    margin:
+        14px 0 7px;
 }
 
-.status-safe {
-    background-color: #dcfce7;
-    border: 1px solid #86efac;
-    color: #166534;
+
+.login-card input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    outline: none;
 }
 
-.status-fraud {
-    background-color: #fee2e2;
-    border: 1px solid #fca5a5;
-    color: #991b1b;
+
+.login-card input:focus {
+
+    border-color:
+        #0284c7;
 }
 
-.status-unknown {
-    background-color: #fef3c7;
-    border: 1px solid #fcd34d;
-    color: #92400e;
-}
 
-/* Modal / Pop-up Window Styling */
-.modal {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.login-btn {
 
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-}
+    width: 100%;
 
-.close-btn {
-    position: absolute;
-    right: 15px; top: 10px;
-    font-size: 24px;
+    margin-top: 22px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background:
+        #0284c7;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
     cursor: pointer;
 }
 
-.guidance-box {
-    margin-top: 30px;
-    padding: 20px;
-    border-left: 5px solid #0284c7;
-    background-color: #f0f9ff;
-    border-radius: 4px;
+
+.login-btn:hover {
+
+    background:
+        #0369a1;
+
 }
 
-.alert-note {
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #991b1b;
-    padding: 12px;
-    border-radius: 4px;
+
+.demo-login {
+
+    font-size: 12px;
+
+    color: #64748b;
+
     margin-top: 15px;
 }
 
-.emergency-sec {
-    background-color: #0f172a;
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background:
+        #0f172a;
+
     color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 40px;
+
+    padding:
+        18px 5%;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
 }
+
+
+.logo {
+
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+
+.logo span {
+
+    color:
+        #38bdf8;
+}
+
+
+nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 500;
+}
+
+
+nav a:hover {
+
+    color:
+        #38bdf8;
+}
+
+
+.logout-btn {
+
+    background:
+        #ef4444;
+
+    color: white;
+
+    border: none;
+
+    padding:
+        9px 17px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.logout-btn:hover {
+
+    background:
+        #dc2626;
+}
+
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3a8a
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding:
+        70px 20px;
+}
+
+
+.hero-badge {
+
+    display: inline-block;
+
+    padding:
+        6px 15px;
+
+    border-radius: 20px;
+
+    background:
+        #0284c7;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+.hero h1 {
+
+    font-size:
+        40px;
+
+    margin-bottom:
+        12px;
+}
+
+
+.hero p {
+
+    max-width:
+        750px;
+
+    margin:
+        auto;
+
+    font-size:
+        18px;
+
+    opacity:
+        0.9;
+}
+
+
+
+/* =====================================================
+   CONTAINERS
+===================================================== */
+
+.container {
+
+    max-width:
+        850px;
+
+    margin:
+        30px auto;
+
+    padding:
+        30px;
+
+    background:
+        white;
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.07);
+}
+
+
+.container h2 {
+
+    margin-bottom:
+        12px;
+}
+
+
+.about-section p {
+
+    margin-bottom:
+        10px;
+}
+
+
+.sub-text {
+
+    color:
+        #64748b;
+
+    margin-bottom:
+        20px;
+}
+
+
+
+/* =====================================================
+   FORMS
+===================================================== */
+
+label {
+
+    display: block;
+
+    font-weight:
+        600;
+
+    margin:
+        13px 0 7px;
+}
+
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    padding:
+        13px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius:
+        7px;
+
+    font-size:
+        16px;
+
+    outline:
+        none;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color:
+        #0284c7;
+}
+
+
+.input-with-btn {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+}
+
+
+.check-btn,
+.submit-btn {
+
+    background:
+        #0284c7;
+
+    color:
+        white;
+
+    border:
+        none;
+
+    padding:
+        13px 20px;
+
+    border-radius:
+        7px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+}
+
+
+.check-btn:hover,
+.submit-btn:hover {
+
+    background:
+        #0369a1;
+}
+
+
+.submit-btn {
+
+    width:
+        100%;
+
+    margin-top:
+        18px;
+}
+
+
+
+/* =====================================================
+   PHONE CHECKER
+===================================================== */
+
+.phone-result-box {
+
+    margin-top:
+        20px;
+
+    padding:
+        18px;
+
+    border-radius:
+        8px;
+}
+
+
+.status-unknown {
+
+    background:
+        #fef3c7;
+
+    color:
+        #92400e;
+
+    border:
+        1px solid #fcd34d;
+}
+
+
+.status-fraud {
+
+    background:
+        #fee2e2;
+
+    color:
+        #991b1b;
+
+    border:
+        1px solid #fca5a5;
+}
+
+
+.result-link {
+
+    display:
+        inline-block;
+
+    background:
+        #0284c7;
+
+    color:
+        white;
+
+    padding:
+        10px 16px;
+
+    border-radius:
+        6px;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        bold;
+
+    margin-top:
+        8px;
+}
+
+
+.checker-note {
+
+    margin-top:
+        15px;
+
+    padding:
+        12px;
+
+    background:
+        #f8fafc;
+
+    border-left:
+        4px solid #0284c7;
+
+    color:
+        #475569;
+}
+
+
+
+/* =====================================================
+   GUIDANCE
+===================================================== */
+
+.guidance-box {
+
+    margin-top:
+        25px;
+
+    padding:
+        22px;
+
+    background:
+        #eff6ff;
+
+    border-left:
+        5px solid #0284c7;
+
+    border-radius:
+        7px;
+}
+
+
+.guidance-box h3 {
+
+    margin-bottom:
+        12px;
+}
+
+
+.guidance-box li {
+
+    margin:
+        9px 0 9px 22px;
+}
+
+
+.alert-note {
+
+    margin-top:
+        20px;
+
+    padding:
+        15px;
+
+    background:
+        #fee2e2;
+
+    color:
+        #991b1b;
+
+    border-radius:
+        7px;
+}
+
+
+
+/* =====================================================
+   CYBER SAFETY TIPS
+===================================================== */
+
+.tips-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        18px;
+
+    margin-top:
+        20px;
+}
+
+
+.tip-card {
+
+    padding:
+        20px;
+
+    background:
+        #f8fafc;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius:
+        10px;
+}
+
+
+.tip-card h3 {
+
+    margin-bottom:
+        8px;
+
+    color:
+        #0369a1;
+}
+
+
+.tip-card p {
+
+    color:
+        #64748b;
+}
+
+
+
+/* =====================================================
+   CYBER HELP DESK DAY
+===================================================== */
+
+.helpdesk-day {
+
+    max-width:
+        1100px;
+
+    margin:
+        40px auto;
+
+    padding:
+        50px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e0f2fe,
+            #f8fafc
+        );
+
+    border-radius:
+        16px;
+}
+
+
+.helpdesk-content {
+
+    text-align:
+        center;
+}
+
+
+.event-badge {
+
+    display:
+        inline-block;
+
+    background:
+        #0284c7;
+
+    color:
+        white;
+
+    padding:
+        7px 15px;
+
+    border-radius:
+        20px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+}
+
+
+.helpdesk-content h2 {
+
+    font-size:
+        32px;
+
+    margin:
+        12px 0;
+}
+
+
+.event-main-text {
+
+    max-width:
+        850px;
+
+    margin:
+        15px auto 30px;
+
+    color:
+        #334155;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.8;
+}
+
+
+
+/* EVENT CARDS */
+
+.event-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        20px;
+}
+
+
+.event-card {
+
+    background:
+        white;
+
+    padding:
+        25px;
+
+    border-radius:
+        12px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.07);
+
+    text-align:
+        left;
+}
+
+
+.event-card h3 {
+
+    color:
+        #0369a1;
+
+    margin-bottom:
+        10px;
+}
+
+
+.event-card p {
+
+    color:
+        #64748b;
+}
+
+
+
+/* ACTIVITIES */
+
+.activities {
+
+    background:
+        white;
+
+    margin-top:
+        25px;
+
+    padding:
+        25px;
+
+    border-radius:
+        12px;
+
+    text-align:
+        left;
+}
+
+
+.activities h3 {
+
+    color:
+        #0369a1;
+
+    margin-bottom:
+        12px;
+}
+
+
+.activities li {
+
+    margin:
+        10px 0 10px 25px;
+
+    color:
+        #475569;
+}
+
+
+
+/* PURPOSE */
+
+.event-purpose {
+
+    margin-top:
+        25px;
+
+    padding:
+        22px;
+
+    background:
+        #f0fdf4;
+
+    border-left:
+        5px solid #16a34a;
+
+    border-radius:
+        8px;
+
+    text-align:
+        left;
+}
+
+
+.event-purpose h3 {
+
+    color:
+        #166534;
+
+    margin-bottom:
+        8px;
+}
+
+
+
+/* =====================================================
+   OFFICIAL SECTION
+===================================================== */
+
+.official-section {
+
+    max-width:
+        850px;
+
+    margin:
+        30px auto;
+
+    padding:
+        35px;
+
+    text-align:
+        center;
+
+    background:
+        #e0f2fe;
+
+    border-radius:
+        14px;
+}
+
+
+.official-section p {
+
+    margin:
+        15px 0 20px;
+}
+
+
+.official-btn {
+
+    display:
+        inline-block;
+
+    background:
+        #0369a1;
+
+    color:
+        white;
+
+    padding:
+        12px 22px;
+
+    border-radius:
+        7px;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        bold;
+}
+
+
+
+/* =====================================================
+   EMERGENCY
+===================================================== */
+
+.emergency-sec {
+
+    background:
+        #0f172a;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        35px 20px;
+
+    margin-top:
+        40px;
+}
+
+
+.emergency-sec h2 {
+
+    margin-bottom:
+        12px;
+}
+
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #0284c7;
-    color: white;
+
+    background:
+        #0284c7;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        16px;
 }
 
-.hidden { display: none !important; }
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+
+    header {
+
+        flex-direction:
+            column;
+
+        gap:
+            15px;
+
+    }
+
+
+    nav {
+
+        flex-wrap:
+            wrap;
+
+        justify-content:
+            center;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            28px;
+
+    }
+
+
+    .hero p {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .container {
+
+        margin:
+            20px 12px;
+
+        padding:
+            22px;
+
+    }
+
+
+    .input-with-btn {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .check-btn {
+
+        width:
+            100%;
+
+    }
+
+
+    .tips-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .event-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .helpdesk-day {
+
+        margin:
+            25px 12px;
+
+        padding:
+            30px 18px;
+
+    }
+
+
+    .helpdesk-content h2 {
+
+        font-size:
+            26px;
+
+    }
+
+
+    .event-main-text {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .login-card {
+
+        padding:
+            28px 20px;
+
+    }
+
+}
