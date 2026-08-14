@@ -1,36 +1,26 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Cyber Safety Helpdesk</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     LOGIN PAGE
-===================================================== -->
-
+<!-- LOGIN -->
 <section id="loginPage" class="login-page">
 
     <div class="login-card">
-
-        <div class="login-icon">🛡️</div>
+        <div class="shield">🛡️</div>
 
         <h1>Cyber Safety Helpdesk</h1>
-
-        <p>
-            Login to access the Cyber Safety Helpdesk
-        </p>
+        <p>Login to access the helpdesk</p>
 
         <form id="loginForm">
 
-            <label for="email">Email Address</label>
-
+            <label>Email Address</label>
             <input
                 type="email"
                 id="email"
@@ -38,8 +28,7 @@
                 required
             >
 
-            <label for="password">Password</label>
-
+            <label>Password</label>
             <input
                 type="password"
                 id="password"
@@ -47,85 +36,52 @@
                 required
             >
 
-            <button type="submit">
-                Login
-            </button>
+            <button type="submit">Login</button>
 
         </form>
 
         <p id="loginMessage"></p>
 
         <small>
-            Demo login: Any valid email and password can be used.
+            Demo: Any valid email and password can be used.
         </small>
-
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     MAIN WEBSITE
-===================================================== -->
-
+<!-- MAIN WEBSITE -->
 <main id="mainContent" class="hidden">
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
 
     <div class="logo">
-        🛡️ Cyber<span>Shield</span>
+        Cyber<span>Shield</span> Helpdesk
     </div>
 
     <nav>
-
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#checker">
-            Number Checker
-        </a>
-
-        <a href="#help">
-            Get Help
-        </a>
-
-        <a href="#safety">
-            Safety Tips
-        </a>
-
-        <a href="#helpdesk">
-            Help Desk
-        </a>
-
-        <button id="logoutBtn">
-            Logout
-        </button>
-
+        <a href="#home">Home</a>
+        <a href="#checker">Number Checker</a>
+        <a href="#help">Get Help</a>
+        <a href="#safety">Safety Tips</a>
+        <a href="#helpline">Emergency</a>
+        <button id="logoutBtn">Logout</button>
     </nav>
 
 </header>
 
 
-<!-- =====================================================
-     HOME / HERO
-===================================================== -->
-
+<!-- HERO -->
 <section id="home" class="hero">
 
     <div class="hero-content">
 
-        <div class="badge">
-            CYBER SAFETY AWARENESS
-        </div>
+        <span class="badge">CYBER SAFETY AWARENESS</span>
 
         <h1>
-            Cyber Safety Helpdesk
+            Facing a Cyber Issue?
+            <br>
+            Get Instant Guidance
         </h1>
 
         <p>
@@ -140,7 +96,7 @@
                 📱 Check Number
             </a>
 
-            <a href="#help" class="hero-btn secondary-btn">
+            <a href="#help" class="hero-btn secondary">
                 🆘 Get Help
             </a>
 
@@ -151,15 +107,10 @@
 </section>
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
+<!-- ABOUT -->
 <section class="section">
 
-    <h2>
-        🛡️ About Cyber Safety Helpdesk
-    </h2>
+    <h2>🛡️ About Cyber Safety Helpdesk</h2>
 
     <div class="about-box">
 
@@ -172,11 +123,11 @@
         <p>
             Users can check a mobile number against the
             available demo report database and get basic
-            safety guidance for common cyber problems.
+            safety guidance.
         </p>
 
         <p>
-            The website is created as a Community Engagement
+            This website is created as a Community Engagement
             Project (CEP) for cyber-safety awareness.
         </p>
 
@@ -185,15 +136,10 @@
 </section>
 
 
-<!-- =====================================================
-     NUMBER CHECKER
-===================================================== -->
-
+<!-- NUMBER CHECKER -->
 <section id="checker" class="section">
 
-    <h2>
-        📱 Mobile Number Spam & Risk Checker
-    </h2>
+    <h2>📱 Mobile Number Spam Checker</h2>
 
     <div class="checker-box">
 
@@ -203,7 +149,7 @@
         </p>
 
         <label for="mobileNumber">
-            Enter Mobile Number
+            Mobile Number
         </label>
 
         <input
@@ -211,32 +157,20 @@
             id="mobileNumber"
             maxlength="10"
             inputmode="numeric"
-            placeholder="9876543210"
+            placeholder="Enter 10-digit number"
         >
 
-        <button id="checkNumberBtn">
+        <button onclick="checkSpamNumber()">
             🔍 Check Number
         </button>
 
-        <!-- RESULT WILL APPEAR HERE -->
-
-        <div
-            id="spamResult"
-            class="spam-result hidden"
-        >
-        </div>
-
+        <div id="spamResult" class="spam-result hidden"></div>
 
         <div class="warning">
-
-            <strong>
-                ⚠️ Important:
-            </strong>
-
+            <strong>⚠️ Important:</strong>
             This checker does not guarantee that a number
             is safe, real or fraudulent. It only checks
-            available reports in the current database.
-
+            available reports in the current demo database.
         </div>
 
     </div>
@@ -244,21 +178,10 @@
 </section>
 
 
-<!-- =====================================================
-     GET HELP
-===================================================== -->
-
+<!-- GET HELP -->
 <section id="help" class="section">
 
-    <h2>
-        🚨 Select Your Cyber Problem
-    </h2>
-
-    <p>
-        Select your problem to receive basic
-        cyber-safety guidance.
-    </p>
-
+    <h2>🚨 Select Your Cyber Problem</h2>
 
     <div class="help-box">
 
@@ -298,7 +221,6 @@
 
         </select>
 
-
         <label for="details">
             Additional Details
         </label>
@@ -309,184 +231,72 @@
             placeholder="Briefly describe your problem..."
         ></textarea>
 
-
-        <button id="guidanceBtn">
+        <button onclick="getGuidance()">
             🛡️ Get Safety Guidance
         </button>
 
-
-        <!-- GUIDANCE RESULT -->
-
-        <div
-            id="guidanceResult"
-            class="guidance hidden"
-        >
-        </div>
+        <div id="guidanceResult" class="guidance hidden"></div>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     CYBER SAFETY TIPS
-===================================================== -->
-
+<!-- SAFETY TIPS -->
 <section id="safety" class="section">
 
-    <h2>
-        🔐 Basic Cyber Safety Tips
-    </h2>
-
-    <p class="section-intro">
-        Follow these simple steps to stay safer online.
-    </p>
-
+    <h2>🔐 Basic Cyber Safety Tips</h2>
 
     <div class="tips-grid">
 
-
         <div class="tip">
-
-            <span class="tip-icon">
-                🔑
-            </span>
-
-            <h3>
-                Strong Password
-            </h3>
-
+            <span>🔑</span>
+            <h3>Strong Password</h3>
             <p>
                 Use strong and unique passwords for
-                different online accounts.
+                different accounts.
             </p>
-
         </div>
 
-
         <div class="tip">
-
-            <span class="tip-icon">
-                📲
-            </span>
-
-            <h3>
-                OTP Safety
-            </h3>
-
+            <span>📲</span>
+            <h3>OTP Safety</h3>
             <p>
-                Never share OTP, PIN, CVV or passwords
-                with unknown people.
+                Never share OTP, PIN, CVV or passwords.
             </p>
-
         </div>
 
-
         <div class="tip">
-
-            <span class="tip-icon">
-                🔗
-            </span>
-
-            <h3>
-                Check Links
-            </h3>
-
+            <span>🔗</span>
+            <h3>Check Links</h3>
             <p>
-                Do not click suspicious links received
-                through unknown messages or emails.
+                Avoid clicking suspicious links.
             </p>
-
         </div>
 
-
         <div class="tip">
-
-            <span class="tip-icon">
-                💳
-            </span>
-
-            <h3>
-                Payment Safety
-            </h3>
-
+            <span>💳</span>
+            <h3>Payment Safety</h3>
             <p>
-                Always verify the receiver before
-                making an online payment.
+                Verify the receiver before making payments.
             </p>
-
         </div>
 
-
         <div class="tip">
-
-            <span class="tip-icon">
-                🔐
-            </span>
-
-            <h3>
-                Use 2FA
-            </h3>
-
+            <span>🔐</span>
+            <h3>Use 2FA</h3>
             <p>
-                Enable Two-Factor Authentication whenever
-                it is available.
+                Enable Two-Factor Authentication.
             </p>
-
         </div>
 
-
         <div class="tip">
-
-            <span class="tip-icon">
-                👤
-            </span>
-
-            <h3>
-                Fake Profiles
-            </h3>
-
+            <span>👤</span>
+            <h3>Fake Profiles</h3>
             <p>
                 Verify social-media profiles before
-                sharing information or sending money.
+                sharing information.
             </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <span class="tip-icon">
-                💻
-            </span>
-
-            <h3>
-                Update Devices
-            </h3>
-
-            <p>
-                Keep your operating system and apps
-                updated with security fixes.
-            </p>
-
-        </div>
-
-
-        <div class="tip">
-
-            <span class="tip-icon">
-                📢
-            </span>
-
-            <h3>
-                Report Scams
-            </h3>
-
-            <p>
-                Report cyber incidents through official
-                government channels.
-            </p>
-
         </div>
 
     </div>
@@ -494,336 +304,21 @@
 </section>
 
 
-<!-- =====================================================
-     HELP DESK DAY
-===================================================== -->
+<!-- COMMUNITY -->
+<section class="section community">
 
-<section id="helpdesk" class="section community">
+    <span class="badge">
+        COMMUNITY AWARENESS PROGRAM
+    </span>
 
-    <div class="badge">
-        COMMUNITY CYBER AWARENESS PROGRAM
-    </div>
+    <h2>🛡️ Cyber Help Desk Day</h2>
 
-    <h2>
-        🛡️ Cyber Help Desk Day
-    </h2>
-
-    <p class="center-text">
-
+    <p>
         A community awareness activity where students
-        provide basic cyber-safety information and
-        demonstrate the Cyber Safety Helpdesk website.
-
+        provide basic cyber-safety information.
     </p>
-
 
     <div class="cards">
 
-
         <div class="card">
-
-            <div class="card-icon">
-                👥
-            </div>
-
-            <h3>
-                Community Members
-            </h3>
-
-            <p>
-                Community members can ask general
-                cyber-safety questions and learn
-                basic online safety practices.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-                💻
-            </div>
-
-            <h3>
-                Student Demonstration
-            </h3>
-
-            <p>
-                Students demonstrate how to use the
-                Cyber Safety Helpdesk and its
-                different features.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-icon">
-                📢
-            </div>
-
-            <h3>
-                Awareness Guidance
-            </h3>
-
-            <p>
-                Explain phishing, fake accounts,
-                online fraud, OTP scams and
-                account security.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <h2>
-        📋 Cyber Help Desk Day Activities
-    </h2>
-
-
-    <ul class="activities">
-
-        <li>
-            Answer general cyber-safety questions.
-        </li>
-
-        <li>
-            Demonstrate the Cyber Safety Helpdesk website.
-        </li>
-
-        <li>
-            Explain suspicious links and phishing.
-        </li>
-
-        <li>
-            Explain fake accounts and impersonation.
-        </li>
-
-        <li>
-            Provide online-fraud prevention awareness.
-        </li>
-
-        <li>
-            Explain OTP and password safety.
-        </li>
-
-        <li>
-            Guide users toward official cybercrime reporting.
-        </li>
-
-    </ul>
-
-
-    <div class="purpose">
-
-        <h2>
-            🎯 Purpose
-        </h2>
-
-        <p>
-            The purpose of Cyber Help Desk Day is to
-            increase community awareness about cyber
-            safety and help people understand simple
-            steps for protecting personal information
-            and online accounts.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     OFFICIAL CYBER CRIME PORTAL
-===================================================== -->
-
-<section class="official">
-
-    <h2>
-        🇮🇳 Official Cyber Crime Help
-    </h2>
-
-    <p>
-        For official cybercrime reporting, visit the
-        National Cyber Crime Reporting Portal.
-    </p>
-
-    <a
-        href="https://cybercrime.gov.in/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="portal-btn"
-    >
-        🌐 Open Cyber Crime Portal
-    </a>
-
-</section>
-
-
-<!-- =====================================================
-     EMERGENCY SECTION
-===================================================== -->
-
-<section class="emergency">
-
-    <h2>
-        🚨 Need Immediate Assistance?
-    </h2>
-
-    <p>
-        If you have experienced financial cyber fraud,
-        report it as soon as possible.
-    </p>
-
-
-    <div class="emergency-buttons">
-
-        <a
-            href="tel:1930"
-            class="call-btn"
-        >
-            📞 Call 1930
-        </a>
-
-
-        <a
-            href="https://cybercrime.gov.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="report-btn"
-        >
-            📝 Report Cyber Crime
-        </a>
-
-    </div>
-
-
-    <p class="emergency-note">
-
-        National Cyber Crime Helpline:
-        <strong>1930</strong>
-
-    </p>
-
-</section>
-
-
-<!-- =====================================================
-     FAQ
-===================================================== -->
-
-<section class="section">
-
-    <h2>
-        ❓ Frequently Asked Questions
-    </h2>
-
-
-    <div class="faq">
-
-
-        <details>
-
-            <summary>
-                Is every unknown number a scam?
-            </summary>
-
-            <p>
-                No. An unknown number is not automatically
-                a scam. Verify the caller independently
-                before taking action.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                Should I share my OTP with someone?
-            </summary>
-
-            <p>
-                No. Never share OTPs with callers or
-                unknown people.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                What should I do after financial cyber fraud?
-            </summary>
-
-            <p>
-                Contact your bank through its official
-                channel and report financial cyber fraud
-                through the appropriate official channels,
-                including 1930 in India.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                Can this website guarantee that a number is safe?
-            </summary>
-
-            <p>
-                No. The checker only displays information
-                available in its database. It cannot
-                guarantee that a number is safe or genuine.
-            </p>
-
-        </details>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="footer-content">
-
-        <h3>
-            🛡️ Cyber Safety Helpdesk
-        </h3>
-
-        <p>
-            Empowering Safe Digital Communities
-        </p>
-
-        <p>
-            © 2026 Cyber Safety Helpdesk.
-            All Rights Reserved.
-        </p>
-
-    </div>
-
-</footer>
-
-
-</main>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script src="script.js"></script>
-
-</body>
-</html>
+           
