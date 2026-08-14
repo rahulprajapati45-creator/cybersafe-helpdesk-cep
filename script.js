@@ -1,283 +1,125 @@
-// =====================================================
-// REAL-TIME MOBILE NUMBER VALIDATION
-// Abstract API
-// =====================================================
+function checkSpamNumber() {
 
-const API_KEY = "YOUR_API_KEY";
+const input = document  
+    .getElementById("mobileNumber")  
+    .value  
+    .trim();  
 
-document
-    .getElementById("phoneCheckForm")
-    .addEventListener("submit", async function (e) {
+const result = document  
+    .getElementById("spamResult");  
 
-        e.preventDefault();
+// Indian mobile number format  
+const indianNumber = /^[6-9][0-9]{9}$/;  
 
-        const phoneInput =
-            document.getElementById("phoneNumber");
+if (!indianNumber.test(input)) {  
 
-        const resultBox =
-            document.getElementById("phoneResult");
+    result.className = "spam-result spam-unknown";  
 
-        const phone =
-            phoneInput.value.trim();
+    result.innerHTML = `  
+        <h3>⚠️ Invalid Number</h3>  
+        <p>  
+            Please enter a valid 10-digit Indian mobile number  
+            starting with 6, 7, 8 or 9.  
+        </p>  
+    `;  
 
-        // ---------------------------------------------
-        // Validate Indian 10 digit number
-        // ---------------------------------------------
+    return;  
+}  
 
-        if (!/^[6-9][0-9]{9}$/.test(phone)) {
+/*  
+   DEMO SPAM DATABASE  
 
-            resultBox.className =
-                "phone-result-box status-fraud";
+   Ye sirf testing ke liye hai.  
+   Real spam database nahi hai.  
+*/  
 
-            resultBox.classList.remove("hidden");
+const spamDatabase = {  
 
-            resultBox.innerHTML = `
-                ❌ <strong>Invalid Number</strong>
-                <br><br>
-                Please enter a valid Indian 10-digit
-                mobile number starting with 6, 7, 8 or 9.
-            `;
+    "9876543210": {  
+        status: "spam",  
+        reason: "Multiple spam reports in demo database."  
+    },  
 
-            return;
-        }
+    "9123456789": {  
+        status: "spam",  
+        reason: "Reported for suspicious messages in demo database."  
+    },  
 
+    "9988776655": {  
+        status: "spam",  
+        reason: "Reported for suspected scam activity in demo database."  
+    }  
+};  
 
-        // Loading message
 
-        resultBox.className =
-            "phone-result-box status-unknown";
+// Check database  
+if (spamDatabase[input]) {  
 
-        resultBox.classList.remove("hidden");
+    const data = spamDatabase[input];  
 
-        resultBox.innerHTML = `
-            🔎 <strong>Checking number...</strong>
-            <br><br>
-            Please wait while we verify the number.
-        `;
+    if (data.status === "spam") {  
 
+        result.className = "spam-result spam-danger";  
 
-        try {
+        result.innerHTML = `  
+            <h3>🔴 SPAM / FRAUD REPORTED</h3>  
 
-            // -----------------------------------------
-            // Abstract API request
-            // -----------------------------------------
+            <p>  
+                Number: <strong>${input}</strong>  
+            </p>  
 
-            const response = await fetch(
-                `https://phonevalidation.abstractapi.com/v1/?api_key=${API_KEY}&phone=+91${phone}`
-            );
+            <p>  
+                ${data.reason}  
+            </p>  
 
+            <p>  
+                ⚠️ Do not share OTP, PIN, CVV,  
+                passwords or banking information.  
+            </p>  
 
-            if (!response.ok) {
+            <p>  
+                If you have lost money, contact  
+                <strong>1930</strong> immediately.  
+            </p>  
 
-                throw new Error(
-                    "API request failed"
-                );
+            <a  
+                href="https://cybercrime.gov.in/"  
+                target="_blank"  
+                rel="noopener"  
+            >  
+                Report Cyber Crime  
+            </a>  
+        `;  
 
-            }
+        return;  
+    }  
+}  
 
 
-            const data =
-                await response.json();
-
-
-            // -----------------------------------------
-            // API ERROR
-            // -----------------------------------------
-
-            if (data.error) {
-
-                throw new Error(
-                    data.error.message ||
-                    "Unable to verify number"
-                );
-
-            }
-
-
-            // -----------------------------------------
-            // INVALID NUMBER
-            // -----------------------------------------
-
-            if (data.valid === false) {
-
-                resultBox.className =
-                    "phone-result-box status-fraud";
-
-                resultBox.innerHTML = `
-
-                    🔴
-                    <strong>
-                        INVALID / NOT VALID
-                    </strong>
-
-                    <br><br>
-
-                    Number:
-                    <strong>+91 ${phone}</strong>
-
-                    <br><br>
-
-                    This number could not be
-                    verified as a valid phone number.
-
-                `;
-
-                return;
-            }
-
-
-            // -----------------------------------------
-            // VALID NUMBER
-            // -----------------------------------------
-
-            let riskText =
-                "Risk information unavailable";
-
-            let riskClass =
-                "status-unknown";
-
-
-            if (
-                typeof data.risk_score === "number"
-            ) {
-
-                const risk =
-                    data.risk_score;
-
-
-                if (risk >= 0.7) {
-
-                    riskText =
-                        "HIGH RISK";
-
-                    riskClass =
-                        "status-fraud";
-
-                }
-
-                else if (risk >= 0.4) {
-
-                    riskText =
-                        "MEDIUM RISK";
-
-                    riskClass =
-                        "status-unknown";
-
-                }
-
-                else {
-
-                    riskText =
-                        "LOW RISK";
-
-                    riskClass =
-                        "status-safe";
-
-                }
-
-            }
-
-
-            resultBox.className =
-                `phone-result-box ${riskClass}`;
-
-
-            resultBox.innerHTML = `
-
-                ${
-                    riskClass === "status-safe"
-                    ? "🟢"
-                    : riskClass === "status-fraud"
-                    ? "🔴"
-                    : "🟠"
-                }
-
-                <strong>
-                    ${riskText}
-                </strong>
-
-                <br><br>
-
-                <strong>Number:</strong>
-                +91 ${phone}
-
-                <br>
-
-                <strong>Valid:</strong>
-                ${data.valid ? "Yes" : "No"}
-
-                <br>
-
-                <strong>Type:</strong>
-                ${data.line_type || "Unknown"}
-
-                <br>
-
-                <strong>Carrier:</strong>
-                ${data.carrier || "Unknown"}
-
-                <br>
-
-                <strong>Location:</strong>
-                ${data.registered_location || "Unknown"}
-
-                <br>
-
-                <strong>Country:</strong>
-                ${data.country_name || "India"}
-
-                <br><br>
-
-                <strong>Risk Score:</strong>
-                ${
-                    typeof data.risk_score === "number"
-                    ? data.risk_score
-                    : "Not available"
-                }
-
-                <br><br>
-
-                <small>
-
-                    ⚠️ A valid/low-risk result does NOT
-                    guarantee that the caller is trustworthy
-                    or that the number is not being used for
-                    scams. Do not share OTP, PIN, CVV or
-                    passwords.
-
-                </small>
-
-            `;
-
-        }
-
-        catch (error) {
-
-            console.error(error);
-
-
-            resultBox.className =
-                "phone-result-box status-fraud";
-
-
-            resultBox.innerHTML = `
-
-                ❌
-                <strong>
-                    Verification Failed
-                </strong>
-
-                <br><br>
-
-                We could not connect to the
-                verification service.
-
-                <br><br>
-
-                Please try again later.
-
-            `;
-
-        }
-
-    });
+/*  
+   For numbers not present in the demo database,  
+   don't claim that they are definitely safe.  
+*/  
+
+result.className = "spam-result spam-unknown";  
+
+result.innerHTML = `  
+    <h3>🟡 NO KNOWN REPORT IN DEMO DATABASE</h3>  
+
+    <p>  
+        Number: <strong>${input}</strong>  
+    </p>  
+
+    <p>  
+        We don't have a spam report for this number  
+        in our current demo database.  
+    </p>  
+
+    <p>  
+        This does <strong>NOT</strong> mean the number  
+        is definitely safe or real.  
+    </p>  
+`;
+
+}
+Pahele wala code hatake ye wala code daly kya
