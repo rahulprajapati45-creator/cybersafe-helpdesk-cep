@@ -3,70 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Safety Helpdesk</title>
+    <title>Cyber Safety Helpdesk & Fraud Checker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Header Section -->
     <header>
-        <div class="logo">Cyber<span>Shield</span> Helpdesk</div>
-        <nav>
-            <a href="#guidance">Get Help</a>
-            <a href="#helpline" class="btn-emergency">Emergency Hotline</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Facing a Cyber Issue? Get Instant Guidance</h1>
-        <p>Select your issue below to receive immediate, step-by-step action plans to protect yourself.</p>
-    </section>
-
-    <!-- Interactive Helpdesk Section -->
-    <section id="guidance" class="container">
-        <h2>Select Your Problem</h2>
-        <form id="cyberForm">
-            <div class="form-group">
-                <label for="issueType">What problem are you facing?</label>
-                <select id="issueType" required>
-                    <option value="" disabled selected>-- Select an Issue --</option>
-                    <option value="fake-account">Fake Account / Impersonation</option>
-                    <option value="suspicious-link">Suspicious Link / Phishing</option>
-                    <option value="online-fraud">Online Financial Fraud</option>
-                    <option value="hacked-account">Hacked Account</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="details">Additional Details (Optional):</label>
-                <textarea id="details" rows="3" placeholder="Briefly describe what happened..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Get Instant Guidance</button>
-        </form>
-
-        <!-- Dynamic Guidance Box -->
-        <div id="guidanceResult" class="guidance-box hidden">
-            <h3 id="guidanceTitle"></h3>
-            <div id="guidanceSteps"></div>
-            <div class="alert-note">
-                <strong>Emergency Action:</strong> If you lost money, immediately call the National Cyber Crime Helpline at <strong>1930</strong> or report at <strong>cybercrime.gov.in</strong>.
-            </div>
-        </div>
-    </section>
-
-    <!-- Helpline Footer Section -->
-    <section id="helpline" class="emergency-sec">
-        <h2>Need Further Assistance?</h2>
-        <p>National Cyber Crime Helpline Number: <strong>1930</strong></p>
-        <p>Report online at: <strong>www.cybercrime.gov.in</strong></p>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Cyber Safety Helpdesk. Empowering Safe Digital Communities.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
